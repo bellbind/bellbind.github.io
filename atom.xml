@@ -4,7 +4,7 @@
   <title><![CDATA[bellbind.github.io]]></title>
   <link href="http://bellbind.github.io/atom.xml" rel="self"/>
   <link href="http://bellbind.github.io/"/>
-  <updated>2013-07-11T14:52:50+09:00</updated>
+  <updated>2013-07-11T15:07:00+09:00</updated>
   <id>http://bellbind.github.io/</id>
   <author>
     <name><![CDATA[bellbind]]></name>
@@ -12,6 +12,62 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[_config.yml について]]></title>
+    <link href="http://bellbind.github.io/blog/2013/07/11/config-dot-yml/"/>
+    <updated>2013-07-11T14:55:00+09:00</updated>
+    <id>http://bellbind.github.io/blog/2013/07/11/config-dot-yml</id>
+    <content type="html"><![CDATA[<p>Octpressの設定は、<code>_config.yml</code>で行う。</p>
+
+<!-- more -->
+
+
+<p><code>_config.yml</code>には、ページheaderとして埋め込まれるsite情報を
+<a href="http://magazine.rubyist.net/?0009-YAML">YAML形式</a>で記述する。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">http://bellbind.github.io</span>
+</span><span class='line'><span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">bellbind.github.io</span>
+</span><span class='line'><span class="l-Scalar-Plain">subtitle</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">github pages</span>
+</span><span class='line'><span class="l-Scalar-Plain">author</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">bellbind</span>
+</span><span class='line'><span class="l-Scalar-Plain">simple_search</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">http://google.com/search</span>
+</span><span class='line'><span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="p-Indicator">&gt;</span>
+</span><span class='line'>  <span class="no">put something</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>yamlなので、<code>description</code>のように長いテキストは、インデントさせて
+マルチラインで記述できる。</p>
+
+<p>また、<code>date_format</code>を以下の
+<a href="http://doc.ruby-lang.org/ja/1.9.3/method/Time/i/strftime.html">srtrftimeフォーマット</a>
+にすることで、日付は、YYYY-MM-DDになるようにした。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">date_format</span><span class="p-Indicator">:</span> <span class="s">&quot;%F&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>最後にYAMLの注意点として、key-valueの間のコロンの後ろには
+スペース1つが必須です。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">user:bellbind</span>   <span class="c1"># 間違い</span>
+</span><span class='line'><span class="l-Scalar-Plain">user</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">bellbind</span>  <span class="c1"># 正解</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Hello Octpress]]></title>

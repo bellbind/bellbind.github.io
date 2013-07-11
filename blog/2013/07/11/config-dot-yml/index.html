@@ -5,12 +5,20 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Hello Octpress - bellbind.github.io</title>
+  <title>_config.yml について - bellbind.github.io</title>
   <meta name="author" content="bellbind">
 
   
-  <meta name="description" content="はじめてのOctpressポスト。 octpress
-repo ">
+  <meta name="description" content="Octpressの設定は、_config.ymlで行う。 _config.ymlには、ページheaderとして埋め込まれるsite情報を
+YAML形式で記述する。 1
+2
+3
+4
+5
+6
+7
+url: http://bellbind.github.io
+title: bellbind.github &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +27,7 @@ repo ">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://bellbind.github.io/blog/2013/07/11/hello-octpress">
+  <link rel="canonical" href="http://bellbind.github.io/blog/2013/07/11/config-dot-yml">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="bellbind.github.io" type="application/atom+xml">
@@ -70,7 +78,7 @@ repo ">
   
   <header>
     
-      <h1 class="entry-title">Hello Octpress</h1>
+      <h1 class="entry-title">_config.yml について</h1>
     
     
       <p class="meta">
@@ -86,22 +94,60 @@ repo ">
   
 
 
-<time datetime="2013-07-11T14:19:00+09:00" pubdate data-updated="true">2013-07-11</time>
+<time datetime="2013-07-11T14:55:00+09:00" pubdate data-updated="true">2013-07-11</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>はじめてのOctpressポスト。</p>
+<div class="entry-content"><p>Octpressの設定は、<code>_config.yml</code>で行う。</p>
 
 <!-- more -->
 
 
-<ul>
-<li><a href="http://octopress.org/">octpress</a></li>
-<li><a href="https://github.com/bellbind/bellbind.github.io">repo</a></li>
-</ul>
+<p><code>_config.yml</code>には、ページheaderとして埋め込まれるsite情報を
+<a href="http://magazine.rubyist.net/?0009-YAML">YAML形式</a>で記述する。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">http://bellbind.github.io</span>
+</span><span class='line'><span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">bellbind.github.io</span>
+</span><span class='line'><span class="l-Scalar-Plain">subtitle</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">github pages</span>
+</span><span class='line'><span class="l-Scalar-Plain">author</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">bellbind</span>
+</span><span class='line'><span class="l-Scalar-Plain">simple_search</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">http://google.com/search</span>
+</span><span class='line'><span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="p-Indicator">&gt;</span>
+</span><span class='line'>  <span class="no">put something</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>yamlなので、<code>description</code>のように長いテキストは、インデントさせて
+マルチラインで記述できる。</p>
+
+<p>また、<code>date_format</code>を以下の
+<a href="http://doc.ruby-lang.org/ja/1.9.3/method/Time/i/strftime.html">srtrftimeフォーマット</a>
+にすることで、日付は、YYYY-MM-DDになるようにした。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">date_format</span><span class="p-Indicator">:</span> <span class="s">&quot;%F&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>最後にYAMLの注意点として、key-valueの間のコロンの後ろには
+スペース1つが必須です。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">user:bellbind</span>   <span class="c1"># 間違い</span>
+</span><span class='line'><span class="l-Scalar-Plain">user</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">bellbind</span>  <span class="c1"># 正解</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 
 </div>
 
@@ -125,12 +171,12 @@ repo ">
   
 
 
-<time datetime="2013-07-11T14:19:00+09:00" pubdate data-updated="true">2013-07-11</time>
+<time datetime="2013-07-11T14:55:00+09:00" pubdate data-updated="true">2013-07-11</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/misc/'>misc</a>
+    <a class='category' href='/blog/categories/octpress/'>octpress</a>
   
 </span>
 
@@ -139,7 +185,7 @@ repo ">
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bellbind.github.io/blog/2013/07/11/hello-octpress/" data-via="bellbind" data-counturl="http://bellbind.github.io/blog/2013/07/11/hello-octpress/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bellbind.github.io/blog/2013/07/11/config-dot-yml/" data-via="bellbind" data-counturl="http://bellbind.github.io/blog/2013/07/11/config-dot-yml/" >Tweet</a>
   
   
   
@@ -148,8 +194,8 @@ repo ">
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2013/07/11/hello-octpress/" title="Previous Post: Hello Octpress">&laquo; Hello Octpress</a>
       
-        <a class="basic-alignment right" href="/blog/2013/07/11/config-dot-yml/" title="Next Post: _config.yml について">_config.yml について &raquo;</a>
       
     </p>
   </footer>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: octpress | bellbind.github.io]]></title>
+  <link href="http://bellbind.github.io/blog/categories/octpress/atom.xml" rel="self"/>
+  <link href="http://bellbind.github.io/"/>
+  <updated>2013-07-11T15:07:00+09:00</updated>
+  <id>http://bellbind.github.io/</id>
+  <author>
+    <name><![CDATA[bellbind]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[_config.yml について]]></title>
+    <link href="http://bellbind.github.io/blog/2013/07/11/config-dot-yml/"/>
+    <updated>2013-07-11T14:55:00+09:00</updated>
+    <id>http://bellbind.github.io/blog/2013/07/11/config-dot-yml</id>
+    <content type="html"><![CDATA[<p>Octpressの設定は、<code>_config.yml</code>で行う。</p>
+
+<!-- more -->
+
+
+<p><code>_config.yml</code>には、ページheaderとして埋め込まれるsite情報を
+<a href="http://magazine.rubyist.net/?0009-YAML">YAML形式</a>で記述する。</p>
+
+<p><code>yaml
+url: http://bellbind.github.io
+title: bellbind.github.io
+subtitle: github pages
+author: bellbind
+simple_search: http://google.com/search
+description: &gt;
+  put something
+</code></p>
+
+<p>yamlなので、<code>description</code>のように長いテキストは、インデントさせて
+マルチラインで記述できる。</p>
+
+<p>また、<code>date_format</code>を以下の
+<a href="http://doc.ruby-lang.org/ja/1.9.3/method/Time/i/strftime.html">srtrftimeフォーマット</a>
+にすることで、日付は、YYYY-MM-DDになるようにした。</p>
+
+<p><code>yaml
+date_format: "%F"
+</code></p>
+
+<p>最後にYAMLの注意点として、key-valueの間のコロンの後ろには
+スペース1つが必須です。</p>
+
+<p><code>yaml
+user:bellbind   # 間違い
+user: bellbind  # 正解
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>
