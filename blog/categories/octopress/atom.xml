@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | bellbind.github.io]]></title>
   <link href="http://bellbind.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://bellbind.github.io/"/>
-  <updated>2013-07-12T17:42:24+09:00</updated>
+  <updated>2013-07-12T18:03:02+09:00</updated>
   <id>http://bellbind.github.io/</id>
   <author>
     <name><![CDATA[bellbind]]></name>
@@ -12,6 +12,62 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[ソース用リポジトリへ保存する]]></title>
+    <link href="http://bellbind.github.io/blog/2013/07/12/repo-for-source/"/>
+    <updated>2013-07-12T17:47:00+09:00</updated>
+    <id>http://bellbind.github.io/blog/2013/07/12/repo-for-source</id>
+    <content type="html"><![CDATA[<p>octopressのdeployで、リポジトリ<code>username.github.io</code>にアップされるのは、
+あくまで生成結果のファイル群だけです。ソースはアップされません。</p>
+
+<p>ソースもアップするには、別途ソースのためのリポジトリを用意し、
+そこにoctopress全体をアップします。</p>
+
+<!-- more -->
+
+
+<p>github pages用に設定したoctopressは、branchが<code>source</code>になっています。
+そこで、あらためてアップロード用に<code>master</code>ブランチを用意します。</p>
+
+<p><code>bash
+git checkout -b master
+</code></p>
+
+<p>編集したファイルを追加し、masterにcommitします。</p>
+
+<p><code>bash
+git add source
+git add _config.yml
+git commit -m "add my posts"
+</code></p>
+
+<p>つづいて、github上でアップロードするための空リポジトリを用意します。
+その名前を<code>username.github.io-octopress</code>とします。</p>
+
+<p>リモートの設定します。</p>
+
+<p><code>bash
+git remote add origin git@github.com:username/username.github.io-octopress
+git config branch.master.remote origin
+</code></p>
+
+<p>そしてpushすればアップロードされます。</p>
+
+<p><code>bash
+git push -u origin master
+</code></p>
+
+<h2>octopress本家の更新のマージ</h2>
+
+<p>octopressでは、オリジナルのリモートブランチが"octopress"に設定されます。
+よって、以下によって本家の更新を適用できます。</p>
+
+<p><code>bash
+git pull octopress master
+</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[new pageとテンプレートレイアウトのカスタマイズ]]></title>
@@ -53,7 +109,7 @@ postと同様な枠のついたかたちで、アップロードされます。<
 
 <p>たとえば、新しく作ったページを"Blog"や"Archives"と並ぶ
 リンクとして追加したい場合は、
-<code>_inlucdes/custom/navigation.html</code>をエディタで編集し、追加します。</p>
+<code>source/_inlucdes/custom/navigation.html</code>をエディタで編集し、追加します。</p>
 
 <p>```html</p>
 
