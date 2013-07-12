@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | bellbind.github.io]]></title>
   <link href="http://bellbind.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://bellbind.github.io/"/>
-  <updated>2013-07-12T17:09:36+09:00</updated>
+  <updated>2013-07-12T17:12:35+09:00</updated>
   <id>http://bellbind.github.io/</id>
   <author>
     <name><![CDATA[bellbind]]></name>
@@ -64,6 +64,23 @@ rakeで渡したのはURL用のタイトルであり、ASCIIのみをURLに入�
 rake generate
 rake deploy
 </code></p>
+
+<!-- more -->
+
+
+<p>以下のコマンドでも同様です。</p>
+
+<p><code>bash
+rake gen_deploy
+</code></p>
+
+<p>octopressの提供するrakeのtask一覧は、</p>
+
+<p><code>bash
+rake -T
+</code></p>
+
+<p>で表示できます。</p>
 ]]></content>
   </entry>
   
