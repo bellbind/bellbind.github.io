@@ -1,6 +1,6 @@
 (function () {
     var ok = document.getElementById("ok");
-    ok.addEventListener("load", function (ev) {
+    ok.addEventListener("click", function (ev) {
         alert("ok");
     }, false);
 })();
