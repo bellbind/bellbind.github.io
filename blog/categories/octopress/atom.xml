@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | bellbind.github.io]]></title>
   <link href="http://bellbind.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://bellbind.github.io/"/>
-  <updated>2013-07-12T18:03:02+09:00</updated>
+  <updated>2013-07-12T18:04:53+09:00</updated>
   <id>http://bellbind.github.io/</id>
   <author>
     <name><![CDATA[bellbind]]></name>
@@ -57,6 +57,18 @@ git config branch.master.remote origin
 <p><code>bash
 git push -u origin master
 </code></p>
+
+<h2>日々の更新アップロード</h2>
+
+<p>post等のみで、configを編集しないのであれば、</p>
+
+<p><code>bash
+git add source
+git commit -m "new posts"
+git push
+</code></p>
+
+<p>でアップロードできるでしょう。</p>
 
 <h2>octopress本家の更新のマージ</h2>
 
