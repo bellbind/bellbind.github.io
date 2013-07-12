@@ -9,7 +9,9 @@
   <meta name="author" content="bellbind">
 
   
-  <meta name="description" content="Octpressの設定は、_config.ymlで行う。 ">
+  <meta name="description" content="記事を追加する場合、まず以下のコマンドによって
+ひな形のソースファイルを作成します。 1
+rake new_post[&quot;title become url&quot;] ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -72,6 +74,99 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2013/07/12/new-post/">New Post</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-12T16:52:00+09:00" pubdate data-updated="true">2013-07-12</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>記事を追加する場合、まず以下のコマンドによって
+ひな形のソースファイルを作成します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rake new_post<span class="o">[</span><span class="s2">&quot;title become url&quot;</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/07/12/new-post/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/07/12/rake-generate-and-deploy/">Rake Generate and Deploy</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-12T16:49:00+09:00" pubdate data-updated="true">2013-07-12</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>config設定や記事ポストなど何か編集をしたら、
+以下のコマンドによって、サイトへdeployします。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rake generate
+</span><span class='line'>rake deploy
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2013/07/11/config-dot-yml/">_config.yml について</a></h1>
     
     
@@ -95,7 +190,7 @@
   </header>
 
 
-  <div class="entry-content"><p>Octpressの設定は、<code>_config.yml</code>で行う。</p>
+  <div class="entry-content"><p>Octopressの設定は、<code>_config.yml</code>で行う。</p>
 
 </div>
   
@@ -113,7 +208,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/07/11/hello-octpress/">Hello Octpress</a></h1>
+      <h1 class="entry-title"><a href="/blog/2013/07/11/hello-octpress/">Hello Octopress</a></h1>
     
     
       <p class="meta">
@@ -136,7 +231,7 @@
   </header>
 
 
-  <div class="entry-content"><p>はじめてのOctpressポスト。</p>
+  <div class="entry-content"><p>はじめてのOctopressポスト。</p>
 
 </div>
   
@@ -162,11 +257,19 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/07/12/new-post/">New Post</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/12/rake-generate-and-deploy/">Rake Generate and Deploy</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/07/11/config-dot-yml/">_config.yml について</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/07/11/hello-octpress/">Hello Octpress</a>
+        <a href="/blog/2013/07/11/hello-octpress/">Hello Octopress</a>
       </li>
     
   </ul>

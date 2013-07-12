@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: octopress | bellbind.github.io]]></title>
+  <link href="http://bellbind.github.io/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://bellbind.github.io/"/>
+  <updated>2013-07-12T17:04:59+09:00</updated>
+  <id>http://bellbind.github.io/</id>
+  <author>
+    <name><![CDATA[bellbind]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[new post]]></title>
+    <link href="http://bellbind.github.io/blog/2013/07/12/new-post/"/>
+    <updated>2013-07-12T16:52:00+09:00</updated>
+    <id>http://bellbind.github.io/blog/2013/07/12/new-post</id>
+    <content type="html"><![CDATA[<p>記事を追加する場合、まず以下のコマンドによって
+ひな形のソースファイルを作成します。</p>
+
+<p><code>bash
+rake new_post["title become url"]
+</code></p>
+
+<!-- more -->
+
+
+<p>すると、<code>source/_posts/YYYY-MM-DD-title-become-url.markdown</code>という
+ファイルが、以下のような内容で作成されます:</p>
+
+<h2>```</h2>
+
+<p>layout: post
+title: &ldquo;title become url&rdquo;
+date: YYYY-MM-DD mm:ss
+comments: true</p>
+
+<h2>categories: </h2>
+
+<p>```</p>
+
+<p>上部のマイナス3本で囲まれた領域は、ページのヘッダ情報(YAML形式)です。
+rakeで渡したのはURL用のタイトルであり、ASCIIのみをURLに入れるようにしておいて、
+ヘッダの<code>title</code>を日本語文に書き換えても構いません。</p>
+
+<p>この下に本文を
+<a href="http://daringfireball.net/projects/markdown/syntax">markdown形式</a>
+で記入します。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[rake generate and deploy]]></title>
+    <link href="http://bellbind.github.io/blog/2013/07/12/rake-generate-and-deploy/"/>
+    <updated>2013-07-12T16:49:00+09:00</updated>
+    <id>http://bellbind.github.io/blog/2013/07/12/rake-generate-and-deploy</id>
+    <content type="html"><![CDATA[<p>config設定や記事ポストなど何か編集をしたら、
+以下のコマンドによって、サイトへdeployします。</p>
+
+<p><code>bash
+rake generate
+rake deploy
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[_config.yml について]]></title>
+    <link href="http://bellbind.github.io/blog/2013/07/11/config-dot-yml/"/>
+    <updated>2013-07-11T14:55:00+09:00</updated>
+    <id>http://bellbind.github.io/blog/2013/07/11/config-dot-yml</id>
+    <content type="html"><![CDATA[<p>Octopressの設定は、<code>_config.yml</code>で行う。</p>
+
+<!-- more -->
+
+
+<p><code>_config.yml</code>には、ページheaderとして埋め込まれるsite情報を
+<a href="http://magazine.rubyist.net/?0009-YAML">YAML形式</a>で記述する。</p>
+
+<p><code>yaml
+url: http://bellbind.github.io
+title: bellbind.github.io
+subtitle: github pages
+author: bellbind
+simple_search: http://google.com/search
+description: &gt;
+  put something
+</code></p>
+
+<p>yamlなので、<code>description</code>のように長いテキストは、インデントさせて
+マルチラインで記述できる。</p>
+
+<p>また、<code>date_format</code>を以下の
+<a href="http://doc.ruby-lang.org/ja/1.9.3/method/Time/i/strftime.html">srtrftimeフォーマット</a>
+にすることで、日付は、YYYY-MM-DDになるようにした。</p>
+
+<p><code>yaml
+date_format: "%F"
+</code></p>
+
+<p>最後にYAMLの注意点として、key-valueの間のコロンの後ろには
+スペース1つが必須です。</p>
+
+<p><code>yaml
+user:bellbind   # 間違い
+user: bellbind  # 正解
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>

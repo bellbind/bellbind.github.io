@@ -4,7 +4,7 @@
   <title><![CDATA[bellbind.github.io]]></title>
   <link href="http://bellbind.github.io/atom.xml" rel="self"/>
   <link href="http://bellbind.github.io/"/>
-  <updated>2013-07-12T16:45:47+09:00</updated>
+  <updated>2013-07-12T17:04:59+09:00</updated>
   <id>http://bellbind.github.io/</id>
   <author>
     <name><![CDATA[bellbind]]></name>
@@ -14,11 +14,76 @@
 
   
   <entry>
+    <title type="html"><![CDATA[new post]]></title>
+    <link href="http://bellbind.github.io/blog/2013/07/12/new-post/"/>
+    <updated>2013-07-12T16:52:00+09:00</updated>
+    <id>http://bellbind.github.io/blog/2013/07/12/new-post</id>
+    <content type="html"><![CDATA[<p>記事を追加する場合、まず以下のコマンドによって
+ひな形のソースファイルを作成します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rake new_post<span class="o">[</span><span class="s2">&quot;title become url&quot;</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<!-- more -->
+
+
+<p>すると、<code>source/_posts/YYYY-MM-DD-title-become-url.markdown</code>という
+ファイルが、以下のような内容で作成されます:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>---
+</span><span class='line'>layout: post
+</span><span class='line'>title: <span class="s2">&quot;title become url&quot;</span>
+</span><span class='line'>date: YYYY-MM-DD mm:ss
+</span><span class='line'>comments: <span class="nb">true</span>
+</span><span class='line'>categories:
+</span><span class='line'>---
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上部のマイナス3本で囲まれた領域は、ページのヘッダ情報(YAML形式)です。
+rakeで渡したのはURL用のタイトルであり、ASCIIのみをURLに入れるようにしておいて、
+ヘッダの<code>title</code>を日本語文に書き換えても構いません。</p>
+
+<p>この下に本文を
+<a href="http://daringfireball.net/projects/markdown/syntax">markdown形式</a>
+で記入します。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[rake generate and deploy]]></title>
+    <link href="http://bellbind.github.io/blog/2013/07/12/rake-generate-and-deploy/"/>
+    <updated>2013-07-12T16:49:00+09:00</updated>
+    <id>http://bellbind.github.io/blog/2013/07/12/rake-generate-and-deploy</id>
+    <content type="html"><![CDATA[<p>config設定や記事ポストなど何か編集をしたら、
+以下のコマンドによって、サイトへdeployします。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rake generate
+</span><span class='line'>rake deploy
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[_config.yml について]]></title>
     <link href="http://bellbind.github.io/blog/2013/07/11/config-dot-yml/"/>
     <updated>2013-07-11T14:55:00+09:00</updated>
     <id>http://bellbind.github.io/blog/2013/07/11/config-dot-yml</id>
-    <content type="html"><![CDATA[<p>Octpressの設定は、<code>_config.yml</code>で行う。</p>
+    <content type="html"><![CDATA[<p>Octopressの設定は、<code>_config.yml</code>で行う。</p>
 
 <!-- more -->
 
@@ -70,17 +135,17 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Hello Octpress]]></title>
+    <title type="html"><![CDATA[Hello Octopress]]></title>
     <link href="http://bellbind.github.io/blog/2013/07/11/hello-octpress/"/>
     <updated>2013-07-11T14:19:00+09:00</updated>
     <id>http://bellbind.github.io/blog/2013/07/11/hello-octpress</id>
-    <content type="html"><![CDATA[<p>はじめてのOctpressポスト。</p>
+    <content type="html"><![CDATA[<p>はじめてのOctopressポスト。</p>
 
 <!-- more -->
 
 
 <ul>
-<li><a href="http://octopress.org/">octpress</a></li>
+<li><a href="http://octopress.org/">octopress</a></li>
 <li><a href="https://github.com/bellbind/bellbind.github.io">repo</a></li>
 </ul>
 
