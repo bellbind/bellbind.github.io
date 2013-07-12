@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | bellbind.github.io]]></title>
   <link href="http://bellbind.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://bellbind.github.io/"/>
-  <updated>2013-07-12T17:12:35+09:00</updated>
+  <updated>2013-07-12T17:38:07+09:00</updated>
   <id>http://bellbind.github.io/</id>
   <author>
     <name><![CDATA[bellbind]]></name>
@@ -12,6 +12,87 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[new pageとテンプレートレイアウトのカスタマイズ]]></title>
+    <link href="http://bellbind.github.io/blog/2013/07/12/new-page-and-layout-modification/"/>
+    <updated>2013-07-12T17:13:00+09:00</updated>
+    <id>http://bellbind.github.io/blog/2013/07/12/new-page-and-layout-modification</id>
+    <content type="html"><![CDATA[<p>octopressは、<a href="http://jekyllrb.com/">jekyll</a>に、blogスタイルの
+テンプレート構造とrake管理タスクをかぶせたものです。
+markdownやyaml等で書くソースをHTMLにするのは、jekyllの機能です。</p>
+
+<p>jekyllは、任意のサイト構造を構成することが可能で、
+octopressからも、若干手間がかかるけど、任意のページやリソースを配置する
+ことができます。</p>
+
+<!-- more -->
+
+
+<h2>画像ファイル、JSファイル</h2>
+
+<p>ファイルは、<code>source/</code>以下の任意の位置に配置でき、<code>rake deploy</code>で
+同じパス上にアップロードされます。
+postなどからハイパーリンクを張るだけです。</p>
+
+<h2>枠付きページ</h2>
+
+<p>rakeコマンドで作成することができます。</p>
+
+<p><code>bash
+rake new_page[path/to/page]
+</code></p>
+
+<p>すると<code>source/path/to/page/index.markdown</code>というファイルが生成されます。
+postと同様に編集して、<code>rake generate</code> &amp; <code>rake deploy</code>すれば、
+postと同様な枠のついたかたちで、アップロードされます。</p>
+
+<p>ただし、postと違ってトップページから自動でリンクが貼られることはありません。</p>
+
+<h2>フレームレイアウトの編集</h2>
+
+<p>たとえば、新しく作ったページを"Blog"や"Archives"と並ぶ
+リンクとして追加したい場合は、
+<code>_inlucdes/custom/navigation.html</code>をエディタで編集し、追加します。</p>
+
+<p>```html</p>
+
+<ul class="main-navigation">
+  <li><a href="/path/to/page/">My Page</a></li>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+<p>```</p>
+
+<h2>枠付HTMLページ</h2>
+
+<p>rakeコマンドで<code>.html</code>をつけて作成すると、枠付のHTMLを
+生成するページソースを作成できます。</p>
+
+<p><code>bash
+rake new_page[path/to/page/index.html]
+</code></p>
+
+<p>この場合もやはりヘッダ情報YAML入りのファイルが、
+<code>source/path/to/page/index.html</code>にできます。</p>
+
+<p>この中身には、HTMLボディに入れる要素を記述します。</p>
+
+<p>```html</p>
+
+<div>
+...
+</div>
+
+
+<p>```</p>
+
+<p><code>rake generate</code>によって、このまわりに枠がついた
+HTMLファイルが生成されます。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[new post]]></title>
