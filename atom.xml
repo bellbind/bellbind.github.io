@@ -4,7 +4,7 @@
   <title><![CDATA[bellbind.github.io]]></title>
   <link href="http://bellbind.github.io/atom.xml" rel="self"/>
   <link href="http://bellbind.github.io/"/>
-  <updated>2013-07-12T18:04:53+09:00</updated>
+  <updated>2013-07-16T11:35:49+09:00</updated>
   <id>http://bellbind.github.io/</id>
   <author>
     <name><![CDATA[bellbind]]></name>
@@ -40,7 +40,9 @@
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
+<span class='line-number'>4</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>git add <span class="nb">source</span>
+</span><span class='line'>git add sass
 </span><span class='line'>git add _config.yml
 </span><span class='line'>git commit -m <span class="s2">&quot;add my posts&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -62,6 +64,27 @@
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>git push -u origin master
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>復元の仕方</h2>
+
+<p>このソースリポジトリをpullして使うには、以下のようになるでしょう</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git clone git@github.com:username/username.github.io-octopress.git
+</span><span class='line'><span class="nb">cd </span>username.github.io-octopress
+</span><span class='line'>git clone git@github.com:username/username.github.io.git _deploy
+</span><span class='line'>gem install bundler
+</span><span class='line'>bundle install
+</span><span class='line'><span class="c"># rake installは不要</span>
+</span><span class='line'>rake preview
 </span></code></pre></td></tr></table></div></figure>
 
 

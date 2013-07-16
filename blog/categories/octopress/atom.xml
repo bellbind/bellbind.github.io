@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | bellbind.github.io]]></title>
   <link href="http://bellbind.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://bellbind.github.io/"/>
-  <updated>2013-07-12T18:04:53+09:00</updated>
+  <updated>2013-07-16T11:35:49+09:00</updated>
   <id>http://bellbind.github.io/</id>
   <author>
     <name><![CDATA[bellbind]]></name>
@@ -38,6 +38,7 @@ git checkout -b master
 
 <p><code>bash
 git add source
+git add sass
 git add _config.yml
 git commit -m "add my posts"
 </code></p>
@@ -57,6 +58,22 @@ git config branch.master.remote origin
 <p><code>bash
 git push -u origin master
 </code></p>
+
+<h2>復元の仕方</h2>
+
+<p>このソースリポジトリをpullして使うには、以下のようになるでしょう</p>
+
+<p>```bash
+git clone git@github.com:username/username.github.io-octopress.git
+cd username.github.io-octopress
+git clone git@github.com:username/username.github.io.git _deploy
+gem install bundler
+bundle install</p>
+
+<h1>rake installは不要</h1>
+
+<p>rake preview
+```</p>
 
 <h2>日々の更新アップロード</h2>
 
