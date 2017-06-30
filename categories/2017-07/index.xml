@@ -13,12 +13,13 @@
     
     
     <item>
-      <title>Hugo Support</title>
-      <link>https://bellbind.github.io/2017/07/01/hugo-support/</link>
+      <title>hugoの支援コマンド</title>
+      <link>https://bellbind.github.io/2017/07/01/hugo%E3%81%AE%E6%94%AF%E6%8F%B4%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/</link>
       <pubDate>Sat, 01 Jul 2017 02:47:01 +0900</pubDate>
       
-      <guid>https://bellbind.github.io/2017/07/01/hugo-support/</guid>
-      <description>&lt;p&gt;hugo用支援コマンドを作った。&lt;/p&gt;
+      <guid>https://bellbind.github.io/2017/07/01/hugo%E3%81%AE%E6%94%AF%E6%8F%B4%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/</guid>
+      <description>&lt;p&gt;生成と編集でのディレクトリ指定とか、複数にgithub pushとか面倒なので、
+hugo用支援コマンドを作った。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
