@@ -7,15 +7,33 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [Icarus](https://github.com/digitalcraftsman/hugo-icarus-theme).</copyright>
-    <lastBuildDate>Fri, 30 Jun 2017 23:13:45 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 01 Jul 2017 02:47:01 +0900</lastBuildDate>
     
 	<atom:link href="https://bellbind.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Bash</title>
+      <link>https://bellbind.github.io/tags/bash/</link>
+      <pubDate>Sat, 01 Jul 2017 02:47:01 +0900</pubDate>
+      
+      <guid>https://bellbind.github.io/tags/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Github</title>
+      <link>https://bellbind.github.io/tags/github/</link>
+      <pubDate>Sat, 01 Jul 2017 02:47:01 +0900</pubDate>
+      
+      <guid>https://bellbind.github.io/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Hugo</title>
       <link>https://bellbind.github.io/tags/hugo/</link>
-      <pubDate>Fri, 30 Jun 2017 23:13:45 +0900</pubDate>
+      <pubDate>Sat, 01 Jul 2017 02:47:01 +0900</pubDate>
       
       <guid>https://bellbind.github.io/tags/hugo/</guid>
       <description></description>

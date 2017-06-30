@@ -21,7 +21,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
     <meta property="og:title" content="Hugo Support" />
-<meta property="og:description" content="hugo用支援コマンドを作る。
+<meta property="og:description" content="hugo用支援コマンドを作った。
 
 " />
 <meta property="og:type" content="article" />
@@ -45,17 +45,17 @@
     
     
 <meta itemprop="name" content="Hugo Support">
-<meta itemprop="description" content="hugo用支援コマンドを作る。
+<meta itemprop="description" content="hugo用支援コマンドを作った。
 
 ">
 
 
 <meta itemprop="dateModified" content="2017-07-01T02:47:01&#43;09:00" />
-<meta itemprop="wordCount" content="79">
+<meta itemprop="wordCount" content="120">
 
 
 
-<meta itemprop="keywords" content="2017-06,2017-07,hugo," />
+<meta itemprop="keywords" content="2017-06,2017-07,bash,github,hugo," />
 
     
 
@@ -65,7 +65,7 @@
 
 <meta name="twitter:text:title" content="Hugo Support"/>
 <meta name="twitter:title" content="Hugo Support"/>
-<meta name="twitter:description" content="hugo用支援コマンドを作る。
+<meta name="twitter:description" content="hugo用支援コマンドを作った。
 
 "/>
 <meta name="twitter:site" content="@bellbind"/>
@@ -195,7 +195,7 @@
       </div>
       <div class="article-info-block">
         
-          1
+          3
         
         <span>
             Tags
@@ -295,7 +295,7 @@
             <i class="fa fa-calendar"></i>
             <time datetime="2017-07-01 02:47:01 &#43;0900 JST" itemprop="datePublished">2017-07-01</time>
             &middot;
-            79
+            120
             words
             &middot;
             1
@@ -319,14 +319,35 @@
         
             
             
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://bellbind.github.io/tags/hugo">hugo</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://bellbind.github.io/tags/github">github</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://bellbind.github.io/tags/bash">bash</a>
+                
+                
+            </div>
+            
         
     </div>
 </header>
 
         <div class="article-entry" itemprop="articleBody">
-            <p>hugo用支援コマンドを作る。</p>
+            <p>hugo用支援コマンドを作った。</p>
 
 <p></p>
+
+<ul>
+<li><a href="https://github.com/bellbind/bellbind.github.io-hugo">https://github.com/bellbind/bellbind.github.io-hugo</a> の/bin/以下</li>
+</ul>
 
 <h2 id="bin-post">bin/post</h2>
 
@@ -343,6 +364,8 @@ POST=$(date &quot;+post/%Y/%m&quot;)/${TITLE}.md
 $RUN hugo new $POST
 $RUN ${EDITOR=emacs} content/$POST
 </code></pre>
+
+<p><code>./bin/post hugo-support</code> または <code>./bin/post</code> (日付で<code>01.md</code>になる)のように使う。</p>
 
 <h2 id="bin-sync">bin/sync</h2>
 
@@ -362,6 +385,8 @@ then
    $RUN git push
 fi
 </code></pre>
+
+<p><code>./bin/sync</code> で使う。</p>
         </div>
         <footer class="article-footer">
     <a data-url="https://bellbind.github.io/2017/07/01/hugo-support/" data-id="9a3a9d33df349d692b7535343165fe40" class="article-share-link">
@@ -569,10 +594,26 @@ fi
             
             <li class="category-list-item">
                 
+                <a class="category-list-link" href="https://bellbind.github.io/tags/bash">
+                    bash
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://bellbind.github.io/tags/github">
+                    github
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
                 <a class="category-list-link" href="https://bellbind.github.io/tags/hugo">
                     hugo
                 </a>
-                <span class="category-list-count">1</span>
+                <span class="category-list-count">2</span>
             </li>
             
         </ul>
@@ -590,6 +631,12 @@ fi
         Tag cloud
     </h3>
     <div class="widget tagcloud">
+        
+        
+        <a href="https://bellbind.github.io/tags/bash" style="font-size: 12px;">bash</a>
+        
+        
+        <a href="https://bellbind.github.io/tags/github" style="font-size: 12px;">github</a>
         
         
         <a href="https://bellbind.github.io/tags/hugo" style="font-size: 12px;">hugo</a>

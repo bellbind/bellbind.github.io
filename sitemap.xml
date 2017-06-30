@@ -25,14 +25,26 @@
   </url>
   
   <url>
+    <loc>https://bellbind.github.io/tags/bash/</loc>
+    <lastmod>2017-07-01T02:47:01+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://bellbind.github.io/categories/</loc>
     <lastmod>2017-06-30T23:13:45+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://bellbind.github.io/tags/github/</loc>
+    <lastmod>2017-07-01T02:47:01+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://bellbind.github.io/tags/hugo/</loc>
-    <lastmod>2017-06-30T23:13:45+09:00</lastmod>
+    <lastmod>2017-07-01T02:47:01+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -44,7 +56,7 @@
   
   <url>
     <loc>https://bellbind.github.io/tags/</loc>
-    <lastmod>2017-06-30T23:13:45+09:00</lastmod>
+    <lastmod>2017-07-01T02:47:01+09:00</lastmod>
     <priority>0</priority>
   </url>
   
