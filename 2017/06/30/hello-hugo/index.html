@@ -51,7 +51,7 @@
 
 
 <meta itemprop="dateModified" content="2017-06-30T23:13:45&#43;09:00" />
-<meta itemprop="wordCount" content="531">
+<meta itemprop="wordCount" content="535">
 
 
 
@@ -295,7 +295,7 @@
             <i class="fa fa-calendar"></i>
             <time datetime="2017-06-30 23:13:45 &#43;0900 JST" itemprop="datePublished">2017-06-30</time>
             &middot;
-            531
+            535
             words
             &middot;
             2
@@ -397,8 +397,9 @@ $ git push
 
 <p>そのためarchitypes/default.mdを以下のように書いた。</p>
 
-<pre><code class="language-md">---
+<pre><code class="language-default.md">---
 title: &quot;{{ replace .TranslationBaseName &quot;-&quot; &quot; &quot; | title }}&quot;
+slug: &quot;{{ .TranslationBaseName }}&quot;
 date: {{ .Date }}
 categories: [&quot;{{dateFormat &quot;2006-01&quot; .Date}}&quot;]
 tags: []
