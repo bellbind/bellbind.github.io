@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://bellbind.github.io/2017/07/01/hugo-support/</loc>
+    <lastmod>2017-07-01T02:47:01+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://bellbind.github.io/2017/06/30/hello-hugo/</loc>
     <lastmod>2017-06-30T23:13:45+09:00</lastmod>
   </url>
@@ -10,6 +15,12 @@
   <url>
     <loc>https://bellbind.github.io/categories/2017-06/</loc>
     <lastmod>2017-06-30T23:13:45+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://bellbind.github.io/categories/2017-07/</loc>
+    <lastmod>2017-07-01T02:47:01+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -27,7 +38,7 @@
   
   <url>
     <loc>https://bellbind.github.io/post/</loc>
-    <lastmod>2017-06-30T23:13:45+09:00</lastmod>
+    <lastmod>2017-07-01T02:47:01+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -39,7 +50,7 @@
   
   <url>
     <loc>https://bellbind.github.io/</loc>
-    <lastmod>2017-06-30T23:13:45+09:00</lastmod>
+    <lastmod>2017-07-01T02:47:01+09:00</lastmod>
     <priority>0</priority>
   </url>
   

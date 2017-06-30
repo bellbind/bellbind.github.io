@@ -51,11 +51,11 @@
 
 
 <meta itemprop="dateModified" content="2017-06-30T23:13:45&#43;09:00" />
-<meta itemprop="wordCount" content="501">
+<meta itemprop="wordCount" content="531">
 
 
 
-<meta itemprop="keywords" content="2017-06,hugo," />
+<meta itemprop="keywords" content="2017-06,2017-07,hugo," />
 
     
 
@@ -190,7 +190,7 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        1
+        2
         <span>Posts</span>
       </div>
       <div class="article-info-block">
@@ -295,10 +295,10 @@
             <i class="fa fa-calendar"></i>
             <time datetime="2017-06-30 23:13:45 &#43;0900 JST" itemprop="datePublished">2017-06-30</time>
             &middot;
-            501
+            531
             words
             &middot;
-            1
+            2
             minute read
         </div>
         
@@ -381,9 +381,13 @@ $ cp themes/icarus/exampleSite/data/l10n.toml data/
 <pre><code class="language-bash">$ git clone git@github.com:bellbind/bellbind.github.io.git public/
 </code></pre>
 
-<p>そのうえでhugoコマンドで生成:</p>
+<p>そのうえでhugoコマンドで生成し、commitしてpush:</p>
 
 <pre><code class="language-bash">$ hugo
+$ cd public/
+$ git add .
+$ git commit -m &quot;$(LANG=C date)&quot;
+$ git push
 </code></pre>
 
 <h2 id="運用">運用</h2>
@@ -488,6 +492,19 @@ HUGOMORE42
     </div>
 
     
+<nav id="article-nav">
+    
+
+    
+    <a href="https://bellbind.github.io/2017/07/01/hugo-support/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Newer
+      </strong>
+      <div class="article-nav-title">Hugo Support</div>
+    </a>
+    
+</nav>
+
 
 </article>
 
@@ -504,6 +521,32 @@ HUGOMORE42
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://bellbind.github.io/2017/07/01/hugo-support/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://bellbind.github.io/categories/2017-07">
+                        2017-07
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://bellbind.github.io/2017/07/01/hugo-support/" class="title">Hugo Support</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-07-01 02:47:01 &#43;0900 JST" itemprop="datePublished">2017-07-01</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -548,6 +591,14 @@ HUGOMORE42
                 
                 <a class="category-list-link" href="https://bellbind.github.io/categories/2017-06">
                     2017-06
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://bellbind.github.io/categories/2017-07">
+                    2017-07
                 </a>
                 <span class="category-list-count">1</span>
             </li>
