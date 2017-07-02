@@ -55,7 +55,7 @@ as &ldquo;pure ES6&rdquo;, &ldquo;asm.js&rdquo; and &ldquo;WebAssembly&rdquo; wi
 
 
 <meta itemprop="dateModified" content="2017-07-03T01:45:18&#43;09:00" />
-<meta itemprop="wordCount" content="707">
+<meta itemprop="wordCount" content="710">
 
 
 
@@ -301,7 +301,7 @@ as &ldquo;pure ES6&rdquo;, &ldquo;asm.js&rdquo; and &ldquo;WebAssembly&rdquo; wi
             <i class="fa fa-calendar"></i>
             <time datetime="2017-07-03 01:45:18 &#43;0900 JST" itemprop="datePublished">2017-07-03</time>
             &middot;
-            707
+            710
             words
             &middot;
             4
@@ -352,20 +352,49 @@ but the effect as inhibitator is wider than that of activator.</p>
 
 <h2 id="active-demo">Active demo</h2>
 
-<ul>
-<li>Source Codes: <a href="https://gist.github.com/bellbind/dd1c0cd9cbe422caff8dcdae1010ad37">gist:dd1c0cd9cbe422caff8dcdae1010ad37</a></li>
-<li>Pure ES6 version: <a href="https://gist.githack.com/bellbind/dd1c0cd9cbe422caff8dcdae1010ad37/raw/index-es6.html">host on githack</a></li>
-<li>asm.js version: <a href="https://gist.githack.com/bellbind/dd1c0cd9cbe422caff8dcdae1010ad37/raw/index-asm.html">host on githack</a></li>
-<li>WebAssembly version: <a href="https://gist.githack.com/bellbind/dd1c0cd9cbe422caff8dcdae1010ad37/raw/index-wasm.html">host on githack</a></li>
-</ul>
+<table>
+<thead>
+<tr>
+<th align="center">version</th>
+<th align="left">link</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">Pure ES6</td>
+<td align="left"><a href="https://gist.githack.com/bellbind/dd1c0cd9cbe422caff8dcdae1010ad37/raw/index-es6.html">host on githack</a></td>
+</tr>
+
+<tr>
+<td align="center">asm.js</td>
+<td align="left"><a href="https://gist.githack.com/bellbind/dd1c0cd9cbe422caff8dcdae1010ad37/raw/index-asm.html">host on githack</a></td>
+</tr>
+
+<tr>
+<td align="center">WebAssembly</td>
+<td align="left"><a href="https://gist.githack.com/bellbind/dd1c0cd9cbe422caff8dcdae1010ad37/raw/index-wasm.html">host on githack</a></td>
+</tr>
+
+<tr>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="center">(Source Codes)</td>
+<td align="left"><a href="https://gist.github.com/bellbind/dd1c0cd9cbe422caff8dcdae1010ad37">gist:dd1c0cd9cbe422caff8dcdae1010ad37</a></td>
+</tr>
+</tbody>
+</table>
 
 <p>The programs embed the benchmark with <code>console.time()/timeEnd()</code> that prints execution times(ms) on  &ldquo;Web Console&rdquo;.</p>
 
 <h2 id="noten-on-pure-es6-version">Noten on pure ES6 version</h2>
 
-<p>The convolution data is a list of <code>{x, y, f}</code> tuple, not an usual number matrix.
+<p>The convolution representation is a list of <code>{x, y, f}</code> tuple, not an usual number matrix.
 The <code>f</code> ia a factor value. The <code>x</code> and<code>y</code> is a relative offsets as <code>-r</code> to <code>r</code>.
-It can apply linear arrays with <code>map()</code> and <code>reduce()</code> as:</p>
+It can apply to linear arrays with <code>map()</code> and <code>reduce()</code> as:</p>
 
 <pre><code class="language-js">// mat[y * w + x] = v
 function get(mat, x, y) {
@@ -373,8 +402,8 @@ function get(mat, x, y) {
 }
 
 const result = mat.map((v, i) =&gt; {
-    const x = i % w, y = i / w | 0;
-    return conv.reduce((s, c) =&gt; s + c.f * get(mat, x + c.x, y + c.y), 0);
+    const mx = i % w, my = i / w | 0;
+    return conv.reduce((s, {x, y, f}) =&gt; s + f * get(mat, mx + x, my + y), 0);
 });
 </code></pre>
 
@@ -402,12 +431,12 @@ These convolutions forms as circle effect like a force.</p>
 
 <script src="//gist.github.com/bellbind/dd1c0cd9cbe422caff8dcdae1010ad37.js?file=conv.asm.js"></script>
 
-<p>The module is loaded with <code>fetch()</code> and eval with <code>Function()</code>.
-Applying convotion with the exported <code>conv(coffs, clen, soffs, len, w, doffs)</code> function as:</p>
+<p>The asm.js module is loaded with <code>fetch()</code> and eval with <code>Function()</code>.
+Applying convolution with the exported <code>conv(coffs, clen, soffs, len, w, doffs)</code> function as:</p>
 
-<pre><code class="language-js">// cA: [int32, int32, float64] strides as Float64Array
-// sF, dA:  mat[y * w + x]  as Float64Array
-conv(cA.byteOffset, cA.length / 2, sF.byteOffset, sF.length, w, dA.byteOffset);
+<pre><code class="language-js">// cpnv: [int32, int32, float64] strides as Float64Array
+// cells, result:  mat[y * w + x] as Float64Array
+conv(conv.byteOffset, conv.length / 2, cells.byteOffset, cells.length, w, result.byteOffset);
 </code></pre>
 
 <h3 id="note-on-asm-js-programming">Note on asm.js programming</h3>
