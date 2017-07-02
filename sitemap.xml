@@ -30,6 +30,12 @@
   </url>
   
   <url>
+    <loc>https://bellbind.github.io/tags/asm.js/</loc>
+    <lastmod>2017-07-03T01:45:18+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://bellbind.github.io/tags/bash/</loc>
     <lastmod>2017-07-01T02:47:01+09:00</lastmod>
     <priority>0</priority>
@@ -38,6 +44,12 @@
   <url>
     <loc>https://bellbind.github.io/categories/</loc>
     <lastmod>2017-06-30T23:13:45+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://bellbind.github.io/tags/es6/</loc>
+    <lastmod>2017-07-03T01:45:18+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -61,7 +73,13 @@
   
   <url>
     <loc>https://bellbind.github.io/tags/</loc>
-    <lastmod>2017-07-01T02:47:01+09:00</lastmod>
+    <lastmod>2017-07-03T01:45:18+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://bellbind.github.io/tags/webassemby/</loc>
+    <lastmod>2017-07-03T01:45:18+09:00</lastmod>
     <priority>0</priority>
   </url>
   

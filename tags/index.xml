@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [Icarus](https://github.com/digitalcraftsman/hugo-icarus-theme).</copyright>
-    <lastBuildDate>Sat, 01 Jul 2017 02:47:01 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 03 Jul 2017 01:45:18 +0900</lastBuildDate>
     
 	<atom:link href="https://bellbind.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Asm.Js</title>
+      <link>https://bellbind.github.io/tags/asm.js/</link>
+      <pubDate>Mon, 03 Jul 2017 01:45:18 +0900</pubDate>
+      
+      <guid>https://bellbind.github.io/tags/asm.js/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Bash</title>
@@ -18,6 +27,15 @@
       <pubDate>Sat, 01 Jul 2017 02:47:01 +0900</pubDate>
       
       <guid>https://bellbind.github.io/tags/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Es6</title>
+      <link>https://bellbind.github.io/tags/es6/</link>
+      <pubDate>Mon, 03 Jul 2017 01:45:18 +0900</pubDate>
+      
+      <guid>https://bellbind.github.io/tags/es6/</guid>
       <description></description>
     </item>
     
@@ -36,6 +54,15 @@
       <pubDate>Sat, 01 Jul 2017 02:47:01 +0900</pubDate>
       
       <guid>https://bellbind.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Webassemby</title>
+      <link>https://bellbind.github.io/tags/webassemby/</link>
+      <pubDate>Mon, 03 Jul 2017 01:45:18 +0900</pubDate>
+      
+      <guid>https://bellbind.github.io/tags/webassemby/</guid>
       <description></description>
     </item>
     
