@@ -55,7 +55,7 @@ as &ldquo;pure ES6&rdquo;, &ldquo;asm.js&rdquo; and &ldquo;WebAssembly&rdquo; wi
 
 
 <meta itemprop="dateModified" content="2017-07-03T01:45:18&#43;09:00" />
-<meta itemprop="wordCount" content="712">
+<meta itemprop="wordCount" content="717">
 
 
 
@@ -301,7 +301,7 @@ as &ldquo;pure ES6&rdquo;, &ldquo;asm.js&rdquo; and &ldquo;WebAssembly&rdquo; wi
             <i class="fa fa-calendar"></i>
             <time datetime="2017-07-03 01:45:18 &#43;0900 JST" itemprop="datePublished">2017-07-03</time>
             &middot;
-            712
+            717
             words
             &middot;
             4
@@ -409,6 +409,10 @@ but the effect as inhibitator is wider than that of activator.</p>
 
 <h2 id="notes-on-pure-es6-version">Notes on pure ES6 version</h2>
 
+<ul>
+<li><a href="https://gist.github.com/bellbind/dd1c0cd9cbe422caff8dcdae1010ad37#file-script-es6-js">script-es6.js</a></li>
+</ul>
+
 <p>The convolution representation is a list of <code>{x, y, f}</code> tuple, not an usual number matrix.
 The <code>f</code> ia a factor value. The <code>x</code> and<code>y</code> is a relative offsets as <code>-r</code> to <code>r</code>.
 It can apply to linear arrays with <code>map()</code> and <code>reduce()</code> as:</p>
@@ -428,6 +432,11 @@ const result = mat.map((v, i) =&gt; {
 These convolutions forms as circle effect like a force.</p>
 
 <h2 id="notes-on-asm-js-version">Notes on asm.js version</h2>
+
+<ul>
+<li><a href="https://gist.github.com/bellbind/dd1c0cd9cbe422caff8dcdae1010ad37#file-conv-asm-js">conv.asm.js</a></li>
+<li><a href="https://gist.github.com/bellbind/dd1c0cd9cbe422caff8dcdae1010ad37#file-script-asm-js">script-asm.js</a></li>
+</ul>
 
 <p>For asm.js, the list of tuple of <code>{x, y, f}</code>  turns <code>ArrayBuffer</code> as strides of <code>[int32, int32, float64]</code> as:</p>
 
@@ -469,6 +478,11 @@ But the &ldquo;asmjs&rdquo; command does not accept bynarien&rsquo;s accpetable 
 </ul>
 
 <h2 id="notes-on-webassembly-version">Notes on WebAssembly version</h2>
+
+<ul>
+<li><a href="https://gist.github.com/bellbind/dd1c0cd9cbe422caff8dcdae1010ad37#file-conv-wast">conv.wast</a></li>
+<li><a href="https://gist.github.com/bellbind/dd1c0cd9cbe422caff8dcdae1010ad37#file-script-wasm-js">script-wasm.js</a></li>
+</ul>
 
 <p>I use <a href="https://github.com/WebAssembly/binaryen">binaryen</a>&rsquo;s &ldquo;asm2wasm&rdquo; command for making the WebAssembly version.
 The &ldquo;asm2wams&rdquo; generated function bodies seem as direct translation of the &ldquo;conv.asm.js&rdquo; program.
