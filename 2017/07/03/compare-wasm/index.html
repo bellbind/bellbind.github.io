@@ -511,7 +511,7 @@ But not directly used the &ldquo;asm2wasm&rdquo; generated code, I applyed a lit
 33c19
 &lt;     (call $i32u-rem
 ---
-&gt;     ($i32.rem_u
+&gt;     (i32.rem_u
 54,65d39
 &lt;  (func $i32u-div (param $0 i32) (param $1 i32) (result i32)
 &lt;   (if (result i32)
@@ -528,11 +528,11 @@ But not directly used the &ldquo;asm2wasm&rdquo; generated code, I applyed a lit
 92c66
 &lt;       (call $i32u-rem
 ---
-&gt;       ($i32.rem_u
+&gt;       (i32.rem_u
 98c72
 &lt;       (call $i32u-div
 ---
-&gt;       ($i32.div_u
+&gt;       (i32.div_u
 </code></pre>
 
 <h2 id="benchmark-result">Benchmark result</h2>
