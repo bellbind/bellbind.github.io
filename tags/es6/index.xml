@@ -20,7 +20,7 @@
       <guid>https://bellbind.github.io/2017/07/03/compare-wasm/</guid>
       <description>&lt;p&gt;For comparing the performance of WebAssembly runtimes with others,
 I published on-browser programs with the same algorithm
-as &amp;ldquo;pure ES6&amp;rdquo;, &amp;ldquo;asm.js&amp;rdquo; and &amp;ldquo;WebAssembly&amp;rdquo; &lt;strong&gt;without emscripten&lt;/strong&gt;.&lt;/p&gt;
+as &amp;ldquo;plain ES6&amp;rdquo;, &amp;ldquo;asm.js&amp;rdquo; and &amp;ldquo;WebAssembly&amp;rdquo; &lt;strong&gt;without emscripten&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
