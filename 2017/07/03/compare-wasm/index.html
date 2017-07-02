@@ -55,7 +55,7 @@ as &ldquo;pure ES6&rdquo;, &ldquo;asm.js&rdquo; and &ldquo;WebAssembly&rdquo; wi
 
 
 <meta itemprop="dateModified" content="2017-07-03T01:45:18&#43;09:00" />
-<meta itemprop="wordCount" content="710">
+<meta itemprop="wordCount" content="712">
 
 
 
@@ -301,7 +301,7 @@ as &ldquo;pure ES6&rdquo;, &ldquo;asm.js&rdquo; and &ldquo;WebAssembly&rdquo; wi
             <i class="fa fa-calendar"></i>
             <time datetime="2017-07-03 01:45:18 &#43;0900 JST" itemprop="datePublished">2017-07-03</time>
             &middot;
-            710
+            712
             words
             &middot;
             4
@@ -407,7 +407,7 @@ but the effect as inhibitator is wider than that of activator.</p>
 
 <p>The programs embed the benchmark with <code>console.time()/timeEnd()</code> that prints execution times(ms) on  &ldquo;Web Console&rdquo;.</p>
 
-<h2 id="noten-on-pure-es6-version">Noten on pure ES6 version</h2>
+<h2 id="notes-on-pure-es6-version">Notes on pure ES6 version</h2>
 
 <p>The convolution representation is a list of <code>{x, y, f}</code> tuple, not an usual number matrix.
 The <code>f</code> ia a factor value. The <code>x</code> and<code>y</code> is a relative offsets as <code>-r</code> to <code>r</code>.
@@ -427,7 +427,7 @@ const result = mat.map((v, i) =&gt; {
 <p>Two convolution are used as activator and inhibitator applied in each step.
 These convolutions forms as circle effect like a force.</p>
 
-<h2 id="noten-on-asm-js-version">Noten on asm.js version</h2>
+<h2 id="notes-on-asm-js-version">Notes on asm.js version</h2>
 
 <p>For asm.js, the list of tuple of <code>{x, y, f}</code>  turns <code>ArrayBuffer</code> as strides of <code>[int32, int32, float64]</code> as:</p>
 
@@ -456,7 +456,7 @@ Applying convolution with the exported <code>conv(coffs, clen, soffs, len, w, do
 conv(conv.byteOffset, conv.length / 2, cells.byteOffset, cells.length, w, result.byteOffset);
 </code></pre>
 
-<h3 id="note-on-asm-js-programming">Note on asm.js programming</h3>
+<h3 id="notes-on-asm-js-programming">Notes on asm.js programming</h3>
 
 <p>I used the <a href="https://github.com/dherman/asm.js">dherman/asm.js</a> as the syntax checker.
 But the &ldquo;asmjs&rdquo; command does not accept bynarien&rsquo;s accpetable asm.js files
@@ -468,10 +468,10 @@ But the &ldquo;asmjs&rdquo; command does not accept bynarien&rsquo;s accpetable 
 <li><a href="https://github.com/bellbind/asm.js">https://github.com/bellbind/asm.js</a></li>
 </ul>
 
-<h2 id="note-on-webassembly-version">Note on WebAssembly version</h2>
+<h2 id="notes-on-webassembly-version">Notes on WebAssembly version</h2>
 
 <p>I use <a href="https://github.com/WebAssembly/binaryen">binaryen</a>&rsquo;s &ldquo;asm2wasm&rdquo; command for making the WebAssembly version.
-The &ldquo;asm2wams&rdquo; generated function bodies seems direct translation of the &ldquo;conv.asm.js&rdquo; program.
+The &ldquo;asm2wams&rdquo; generated function bodies seem as direct translation of the &ldquo;conv.asm.js&rdquo; program.
 But not directly used the &ldquo;asm2wasm&rdquo; generated code, I applyed a little optimization as:</p>
 
 <ul>
@@ -480,7 +480,7 @@ But not directly used the &ldquo;asm2wasm&rdquo; generated code, I applyed a lit
 <li>Remove generated <code>$i32u-div</code> <code>func</code>, and replace its call part with <code>i32.div_u</code> operation in <code>$conv</code> body.</li>
 </ul>
 
-<p>as:</p>
+<p>Complete diff:</p>
 
 <pre><code class="language-bash">$ diff conv-asm.wast  conv.wast
 2,5c2,3
