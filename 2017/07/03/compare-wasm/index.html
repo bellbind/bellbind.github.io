@@ -55,7 +55,7 @@ as &ldquo;plain ES6&rdquo;, &ldquo;asm.js&rdquo; and &ldquo;WebAssembly&rdquo; w
 
 
 <meta itemprop="dateModified" content="2017-07-03T01:45:18&#43;09:00" />
-<meta itemprop="wordCount" content="717">
+<meta itemprop="wordCount" content="721">
 
 
 
@@ -301,7 +301,7 @@ as &ldquo;plain ES6&rdquo;, &ldquo;asm.js&rdquo; and &ldquo;WebAssembly&rdquo; w
             <i class="fa fa-calendar"></i>
             <time datetime="2017-07-03 01:45:18 &#43;0900 JST" itemprop="datePublished">2017-07-03</time>
             &middot;
-            717
+            721
             words
             &middot;
             4
@@ -552,27 +552,28 @@ But not directly used the &ldquo;asm2wasm&rdquo; generated code, I applyed a lit
 <h2 id="benchmark-result">Benchmark result</h2>
 
 <ul>
-<li>firefox-54.0.1 and chrome-59.0.3071.115 on macOS 10.12.5: MacBook Pro (13-inch, Late 2016, Two Thunderbolt 3 ports)</li>
+<li>Browser: firefox-54.0.1 and chrome-59.0.3071.115 on macOS 10.12.5</li>
+<li>Hardware: MacBook Pro (13-inch, Late 2016, Two Thunderbolt 3 ports)</li>
 </ul>
 
 <table>
 <thead>
 <tr>
-<th></th>
-<th align="right">firfox-54</th>
+<th>version</th>
+<th align="right">firefox-54</th>
 <th align="right">chrome-59</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td>ES6</td>
+<td>Plain ES6</td>
 <td align="right">70ms</td>
 <td align="right">240ms</td>
 </tr>
 
 <tr>
-<td>wasm</td>
+<td>WebAssembly</td>
 <td align="right">80ms</td>
 <td align="right">130ms</td>
 </tr>
