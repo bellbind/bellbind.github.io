@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>bellbind.github.io</title>
+    <title>Comparing WebAssembly with asm.js and pure ES6 &middot; bellbind.github.io</title>
     <meta name="generator" content="Hugo 0.24.1" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,10 +10,7 @@
       <meta name="description" content="hello">
     
     
-      <link href="https://bellbind.github.io/index.xml" rel="alternate" type="application/rss+xml" title="bellbind.github.io" />
-      <link href="https://bellbind.github.io/index.xml" rel="feed" type="application/rss+xml" title="bellbind.github.io" />
-    
-    <link rel="canonical" href="https://bellbind.github.io/"/>
+    <link rel="canonical" href="https://bellbind.github.io/2017/07/03/compare-wasm/"/>
     <link rel="icon" href="https://bellbind.github.io/favicon.ico">
     <link rel="apple-touch-icon" href="https://bellbind.github.io/apple-touch-icon.png"/>
     <link rel="stylesheet" href="https://bellbind.github.io/css/style.css">
@@ -23,14 +20,20 @@
     
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <meta property="og:title" content="bellbind.github.io" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://bellbind.github.io/" />
+    <meta property="og:title" content="Comparing WebAssembly with asm.js and pure ES6" />
+<meta property="og:description" content="For comparing the performance of WebAssembly runtimes with others,
+I published on-browser programs with the same algorithm
+as &ldquo;pure ES6&rdquo;, &ldquo;asm.js&rdquo; and &ldquo;WebAssembly&rdquo; without emscripten.
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bellbind.github.io/2017/07/03/compare-wasm/" />
 
 
 
-<meta property="og:updated_time" content="2017-07-03T01:45:18&#43;09:00"/>
+<meta property="article:published_time" content="2017-07-03T01:45:18&#43;09:00"/>
+<meta property="article:modified_time" content="2017-07-03T01:45:18&#43;09:00"/>
+
 
 
 
@@ -43,11 +46,36 @@
 
     
     
-<meta itemprop="name" content="bellbind.github.io">
-<meta itemprop="description" content="">
+<meta itemprop="name" content="Comparing WebAssembly with asm.js and pure ES6">
+<meta itemprop="description" content="For comparing the performance of WebAssembly runtimes with others,
+I published on-browser programs with the same algorithm
+as &ldquo;pure ES6&rdquo;, &ldquo;asm.js&rdquo; and &ldquo;WebAssembly&rdquo; without emscripten.
 
+">
+
+
+<meta itemprop="dateModified" content="2017-07-03T01:45:18&#43;09:00" />
+<meta itemprop="wordCount" content="707">
+
+
+
+<meta itemprop="keywords" content="2017-06,2017-07,bash,github,hugo," />
 
     
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Comparing WebAssembly with asm.js and pure ES6"/>
+<meta name="twitter:title" content="Comparing WebAssembly with asm.js and pure ES6"/>
+<meta name="twitter:description" content="For comparing the performance of WebAssembly runtimes with others,
+I published on-browser programs with the same algorithm
+as &ldquo;pure ES6&rdquo;, &ldquo;asm.js&rdquo; and &ldquo;WebAssembly&rdquo; without emscripten.
+
+"/>
+<meta name="twitter:site" content="@bellbind"/>
+
     
 
     
@@ -256,12 +284,9 @@
 
     <section id="main">
     
-    
-
-<article class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
-        </a>
 
         <header class="article-header">
     <a href="https://bellbind.github.io/2017/07/03/compare-wasm/">
@@ -305,18 +330,200 @@
 </header>
 
         <div class="article-entry" itemprop="articleBody">
-            <p>
-                <p>For comparing the performance of WebAssembly runtimes with others,
+            <p>For comparing the performance of WebAssembly runtimes with others,
 I published on-browser programs with the same algorithm
 as &ldquo;pure ES6&rdquo;, &ldquo;asm.js&rdquo; and &ldquo;WebAssembly&rdquo; <strong>without emscripten</strong>.</p>
 
 <p></p>
-            </p>
-            <p class="article-more-link">
-                <a href="https://bellbind.github.io/2017/07/03/compare-wasm/">
-                    Read more
-                </a>
-            </p>
+
+<h2 id="the-example-turing-pattern-cell-automaton">The example: Turing-Pattern cell automaton</h2>
+
+<p>&ldquo;Turing Pattern&rdquo; is a chemical model for forming patterns
+as a survival between activators and inhibitators.
+A simple generator of the turing pattern is a cell automaton that
+each cell is also activator and inhibitator for neighbor cellss.</p>
+
+<ul>
+<li>cell[t+1] = cell[t] + actovators[t] - inhibitators[t]</li>
+</ul>
+
+<p>The effect of activators and inhibitators is just gathering value of neighbor cells,
+but the effect as inhibitator is wider than that of activator.</p>
+
+<h2 id="active-demo">Active demo</h2>
+
+<ul>
+<li>Source Codes: <a href="https://gist.github.com/bellbind/dd1c0cd9cbe422caff8dcdae1010ad37">gist:dd1c0cd9cbe422caff8dcdae1010ad37</a></li>
+<li>Pure ES6 version: <a href="https://gist.githack.com/bellbind/dd1c0cd9cbe422caff8dcdae1010ad37/raw/index-es6.html">host on githack</a></li>
+<li>asm.js version: <a href="https://gist.githack.com/bellbind/dd1c0cd9cbe422caff8dcdae1010ad37/raw/index-asm.html">host on githack</a></li>
+<li>WebAssembly version: <a href="https://gist.githack.com/bellbind/dd1c0cd9cbe422caff8dcdae1010ad37/raw/index-wasm.html">host on githack</a></li>
+</ul>
+
+<p>The programs embed the benchmark with <code>console.time()/timeEnd()</code> that prints execution times(ms) on  &ldquo;Web Console&rdquo;.</p>
+
+<h2 id="noten-on-pure-es6-version">Noten on pure ES6 version</h2>
+
+<p>The convolution data is a list of <code>{x, y, f}</code> tuple, not an usual number matrix.
+The <code>f</code> ia a factor value. The <code>x</code> and<code>y</code> is a relative offsets as <code>-r</code> to <code>r</code>.
+It can apply linear arrays with <code>map()</code> and <code>reduce()</code> as:</p>
+
+<pre><code class="language-js">// mat[y * w + x] = v
+function get(mat, x, y) {
+    return return mat[((y + w) % w) * w + ((x + w) % w)];
+}
+
+const result = mat.map((v, i) =&gt; {
+    const x = i % w, y = i / w | 0;
+    return conv.reduce((s, c) =&gt; s + c.f * get(mat, x + c.x, y + c.y), 0);
+});
+</code></pre>
+
+<p>Two convolution are used as activator and inhibitator applied in each step.
+These convolutions forms as circle effect like a force.</p>
+
+<h2 id="noten-on-asm-js-version">Noten on asm.js version</h2>
+
+<p>For asm.js, the list of tuple of <code>{x, y, f}</code>  turns <code>ArrayBuffer</code> as strides of <code>[int32, int32, float64]</code> as:</p>
+
+<pre><code class="language-js">function convert(conv) {
+    const buf = new ArrayBuffer(conv.length * 16);
+    const bufF = new Float64Array(buf);
+    const bufI = new Int32Array(buf);
+    conv.forEach(({x, y, f}, i) =&gt; {
+        bufI[i * 4] = x;
+        bufI[i * 4 + 1] = y;
+        bufF[i * 2 + 1] = f;
+    });
+    return bufF;
+}
+</code></pre>
+
+<p>The hand written asm.js module as:</p>
+
+<script src="//gist.github.com/bellbind/dd1c0cd9cbe422caff8dcdae1010ad37.js?file=conv.asm.js"></script>
+
+<p>The module is loaded with <code>fetch()</code> and eval with <code>Function()</code>.
+Applying convotion with the exported <code>conv(coffs, clen, soffs, len, w, doffs)</code> function as:</p>
+
+<pre><code class="language-js">// cA: [int32, int32, float64] strides as Float64Array
+// sF, dA:  mat[y * w + x]  as Float64Array
+conv(cA.byteOffset, cA.length / 2, sF.byteOffset, sF.length, w, dA.byteOffset);
+</code></pre>
+
+<h3 id="note-on-asm-js-programming">Note on asm.js programming</h3>
+
+<p>I used the <a href="https://github.com/dherman/asm.js">dherman/asm.js</a> as the syntax checker.
+But the &ldquo;asmjs&rdquo; command does not accept bynarien&rsquo;s accpetable asm.js files
+(only accpets commonsjs module style files which rejected by binaryen&rsquo;s &ldquo;asm2wasm&rdquo; command).</p>
+
+<p>I made a little modification for accpeting non cjs module style as:</p>
+
+<ul>
+<li><a href="https://github.com/bellbind/asm.js">https://github.com/bellbind/asm.js</a></li>
+</ul>
+
+<h2 id="note-on-webassembly-version">Note on WebAssembly version</h2>
+
+<p>I use <a href="https://github.com/WebAssembly/binaryen">binaryen</a>&rsquo;s &ldquo;asm2wasm&rdquo; command for making the WebAssembly version.
+The &ldquo;asm2wams&rdquo; generated function bodies seems direct translation of the &ldquo;conv.asm.js&rdquo; program.
+But not directly used the &ldquo;asm2wasm&rdquo; generated code, I applyed a little optimization as:</p>
+
+<ul>
+<li>Remove all <code>import</code> section, and add <code>export</code> <code>memory</code></li>
+<li>Remove generated <code>$i32u-rem</code> <code>func</code>, and replace its call part with <code>i32.rem_u</code> operation in <code>$get</code> and <code>$conv</code> bodies.</li>
+<li>Remove generated <code>$i32u-div</code> <code>func</code>, and replace its call part with <code>i32.div_u</code> operation in <code>$conv</code> body.</li>
+</ul>
+
+<p>as:</p>
+
+<pre><code class="language-bash">$ diff conv-asm.wast  conv.wast
+2,5c2,3
+&lt;  (import &quot;env&quot; &quot;memory&quot; (memory $0 256 256))
+&lt;  (import &quot;env&quot; &quot;table&quot; (table 0 0 anyfunc))
+&lt;  (import &quot;env&quot; &quot;memoryBase&quot; (global $memoryBase i32))
+&lt;  (import &quot;env&quot; &quot;tableBase&quot; (global $tableBase i32))
+---
+&gt;  (export &quot;heap&quot; (memory $0))
+&gt;  (memory $0 1 256)
+7,18d4
+&lt;  (func $i32u-rem (param $0 i32) (param $1 i32) (result i32)
+&lt;   (if (result i32)
+&lt;    (i32.eqz
+&lt;     (get_local $1)
+&lt;    )
+&lt;    (i32.const 0)
+&lt;    (i32.rem_u
+&lt;     (get_local $0)
+&lt;     (get_local $1)
+&lt;    )
+&lt;   )
+&lt;  )
+24c10
+&lt;      (call $i32u-rem
+---
+&gt;      (i32.rem_u
+33c19
+&lt;     (call $i32u-rem
+---
+&gt;     ($i32.rem_u
+54,65d39
+&lt;  (func $i32u-div (param $0 i32) (param $1 i32) (result i32)
+&lt;   (if (result i32)
+&lt;    (i32.eqz
+&lt;     (get_local $1)
+&lt;    )
+&lt;    (i32.const 0)
+&lt;    (i32.div_u
+&lt;     (get_local $0)
+&lt;     (get_local $1)
+&lt;    )
+&lt;   )
+&lt;  )
+92c66
+&lt;       (call $i32u-rem
+---
+&gt;       ($i32.rem_u
+98c72
+&lt;       (call $i32u-div
+---
+&gt;       ($i32.div_u
+</code></pre>
+
+<h2 id="benchmark-result">Benchmark result</h2>
+
+<ul>
+<li>firefox-54.0.1 and chrome-59.0.3071.115 on macOS 10.12.5: MacBook Pro (13-inch, Late 2016, Two Thunderbolt 3 ports)</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="right">firfox-54</th>
+<th align="right">chrome-59</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ES6</td>
+<td align="right">70ms</td>
+<td align="right">240ms</td>
+</tr>
+
+<tr>
+<td>wasm</td>
+<td align="right">80ms</td>
+<td align="right">130ms</td>
+</tr>
+
+<tr>
+<td>asm.js</td>
+<td align="right">80ms</td>
+<td align="right">210ms</td>
+</tr>
+</tbody>
+</table>
         </div>
         <footer class="article-footer">
     <a data-url="https://bellbind.github.io/2017/07/03/compare-wasm/" data-id="5d5d9acf7106075ca51570bbaad496e1" class="article-share-link">
@@ -392,307 +599,24 @@ as &ldquo;pure ES6&rdquo;, &ldquo;asm.js&rdquo; and &ldquo;WebAssembly&rdquo; <s
 </footer>
 
     </div>
-</article>
 
-<article class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        </a>
-
-        <header class="article-header">
-    <a href="https://bellbind.github.io/2017/07/01/hugo-support/">
-    <h1 class="article-title" itemprop="name">
-        hugoの支援コマンド
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2017-07-01 02:47:01 &#43;0900 JST" itemprop="datePublished">2017-07-01</time>
-            &middot;
-            246
-            words
-            &middot;
-            1
-            minute read
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="https://bellbind.github.io/categories/2017-07">2017-07</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="https://bellbind.github.io/tags/hugo">hugo</a>
-                &middot;
-                
-                
-                <a class="article-category-link" href="https://bellbind.github.io/tags/github">github</a>
-                &middot;
-                
-                
-                <a class="article-category-link" href="https://bellbind.github.io/tags/bash">bash</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-        <div class="article-entry" itemprop="articleBody">
-            <p>
-                <p>生成と編集でのディレクトリ指定とか、複数にgithub pushとか面倒なので、
-hugo用支援コマンドを作った。</p>
-
-<p></p>
-            </p>
-            <p class="article-more-link">
-                <a href="https://bellbind.github.io/2017/07/01/hugo-support/">
-                    Read more
-                </a>
-            </p>
-        </div>
-        <footer class="article-footer">
-    <a data-url="https://bellbind.github.io/2017/07/01/hugo-support/" data-id="9a3a9d33df349d692b7535343165fe40" class="article-share-link">
-        <i class="fa fa-share"></i>
-        Share
+    
+<nav id="article-nav">
+    
+    <a href="https://bellbind.github.io/2017/07/01/hugo-support/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">hugoの支援コマンド</div>
     </a>
     
 
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
-    </div>
-</article>
-
-<article class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        </a>
-
-        <header class="article-header">
-    <a href="https://bellbind.github.io/2017/06/30/hello-hugo/">
-    <h1 class="article-title" itemprop="name">
-        Hello Hugo
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2017-06-30 23:13:45 &#43;0900 JST" itemprop="datePublished">2017-06-30</time>
-            &middot;
-            535
-            words
-            &middot;
-            2
-            minute read
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="https://bellbind.github.io/categories/2017-06">2017-06</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="https://bellbind.github.io/tags/hugo">hugo</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-        <div class="article-entry" itemprop="articleBody">
-            <p>
-                <p>github pagesをhugoにした話。</p>
-
-<p></p>
-            </p>
-            <p class="article-more-link">
-                <a href="https://bellbind.github.io/2017/06/30/hello-hugo/">
-                    Read more
-                </a>
-            </p>
-        </div>
-        <footer class="article-footer">
-    <a data-url="https://bellbind.github.io/2017/06/30/hello-hugo/" data-id="3b594b98e063c7fa84142cc0787efa7e" class="article-share-link">
-        <i class="fa fa-share"></i>
-        Share
-    </a>
     
-
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
-    </div>
-</article>
-
-
-<nav id="page-nav">
-
 </nav>
+
+
+</article>
+
 
 
     </section>
