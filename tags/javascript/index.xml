@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Es6 on bellbind.github.io</title>
-    <link>https://bellbind.github.io/tags/es6/</link>
-    <description>Recent content in Es6 on bellbind.github.io</description>
+    <title>Javascript on bellbind.github.io</title>
+    <link>https://bellbind.github.io/tags/javascript/</link>
+    <description>Recent content in Javascript on bellbind.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [Icarus](https://github.com/digitalcraftsman/hugo-icarus-theme).</copyright>
     <lastBuildDate>Sat, 08 Jul 2017 12:52:21 +0900</lastBuildDate>
     
-	<atom:link href="https://bellbind.github.io/tags/es6/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://bellbind.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -23,19 +23,6 @@ with no platform(node.js, modern browsers) dependent APIs.&lt;/p&gt;
 
 &lt;p&gt;The running code is in
 &lt;a href=&#34;https://gist.github.com/bellbind/1cfcc96514099fcebd455259b7249525&#34;&gt;gist:bellbind/1cfcc96514099fcebd455259b7249525&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Comparing WebAssembly performance with asm.js and plain ES6</title>
-      <link>https://bellbind.github.io/2017/07/03/compare-wasm/</link>
-      <pubDate>Mon, 03 Jul 2017 01:45:18 +0900</pubDate>
-      
-      <guid>https://bellbind.github.io/2017/07/03/compare-wasm/</guid>
-      <description>&lt;p&gt;For comparing the performance of WebAssembly runtimes with others,
-I published on-browser programs with the same algorithm
-as &amp;ldquo;plain ES6&amp;rdquo;, &amp;ldquo;asm.js&amp;rdquo; and &amp;ldquo;WebAssembly&amp;rdquo; &lt;strong&gt;without emscripten&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>

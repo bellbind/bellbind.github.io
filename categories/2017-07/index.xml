@@ -7,10 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [Icarus](https://github.com/digitalcraftsman/hugo-icarus-theme).</copyright>
-    <lastBuildDate>Mon, 03 Jul 2017 01:45:18 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 08 Jul 2017 12:52:21 +0900</lastBuildDate>
     
 	<atom:link href="https://bellbind.github.io/categories/2017-07/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Implement SHA256 algorithm in pure ECMAScript</title>
+      <link>https://bellbind.github.io/2017/07/08/implement-sha256-ecmascript/</link>
+      <pubDate>Sat, 08 Jul 2017 12:52:21 +0900</pubDate>
+      
+      <guid>https://bellbind.github.io/2017/07/08/implement-sha256-ecmascript/</guid>
+      <description>&lt;p&gt;How to implement SHA256 hash digest algorithmn in &lt;strong&gt;pure ECMAScript&lt;/strong&gt;;
+with no platform(node.js, modern browsers) dependent APIs.&lt;/p&gt;
+
+&lt;p&gt;The running code is in
+&lt;a href=&#34;https://gist.github.com/bellbind/1cfcc96514099fcebd455259b7249525&#34;&gt;gist:bellbind/1cfcc96514099fcebd455259b7249525&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Comparing WebAssembly performance with asm.js and plain ES6</title>

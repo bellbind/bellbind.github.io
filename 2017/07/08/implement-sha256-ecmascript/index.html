@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Implement SHA256 algorithm in pure ECMAScript &middot; bellbind.github.io</title>
+    <meta name="generator" content="Hugo 0.25" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="bellbind">
+    
+      <meta name="description" content="hello">
+    
+    
+    <link rel="canonical" href="https://bellbind.github.io/2017/07/08/implement-sha256-ecmascript/"/>
+    <link rel="icon" href="https://bellbind.github.io/favicon.ico">
+    <link rel="apple-touch-icon" href="https://bellbind.github.io/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="https://bellbind.github.io/css/style.css">
+    <link rel="stylesheet" href="https://bellbind.github.io/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://bellbind.github.io/css/monokai.css">
+    <link rel="stylesheet" href="https://bellbind.github.io/fancybox/jquery.fancybox.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="Implement SHA256 algorithm in pure ECMAScript" />
+<meta property="og:description" content="How to implement SHA256 hash digest algorithmn in pure ECMAScript;
+with no platform(node.js, modern browsers) dependent APIs.
+
+The running code is in
+gist:bellbind/1cfcc96514099fcebd455259b7249525.
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://bellbind.github.io/2017/07/08/implement-sha256-ecmascript/" />
+
+
+
+<meta property="article:published_time" content="2017-07-08T12:52:21&#43;09:00"/>
+<meta property="article:modified_time" content="2017-07-08T12:52:21&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content="Implement SHA256 algorithm in pure ECMAScript">
+<meta itemprop="description" content="How to implement SHA256 hash digest algorithmn in pure ECMAScript;
+with no platform(node.js, modern browsers) dependent APIs.
+
+The running code is in
+gist:bellbind/1cfcc96514099fcebd455259b7249525.
+
+">
+
+
+<meta itemprop="dateModified" content="2017-07-08T12:52:21&#43;09:00" />
+<meta itemprop="wordCount" content="2702">
+
+
+
+<meta itemprop="keywords" content="ES6,JavaScript,algorithm,cryptography," />
+
+    
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Implement SHA256 algorithm in pure ECMAScript"/>
+<meta name="twitter:title" content="Implement SHA256 algorithm in pure ECMAScript"/>
+<meta name="twitter:description" content="How to implement SHA256 hash digest algorithmn in pure ECMAScript;
+with no platform(node.js, modern browsers) dependent APIs.
+
+The running code is in
+gist:bellbind/1cfcc96514099fcebd455259b7249525.
+
+"/>
+<meta name="twitter:site" content="@bellbind"/>
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="https://bellbind.github.io/" id="logo">
+          
+          <i class="logo" style="background-image: url('https://bellbind.github.io/css/images/logo.png')"></i>
+          
+          <span class="site-title">bellbind.github.io</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="https://bellbind.github.io/">Home</a>
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <a class="main-nav-link" href="https://bellbind.github.io/tags/">Tags</a>
+          
+          
+          
+          <a class="main-nav-link" href="https://bellbind.github.io/categories/">Categories</a>
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="https://bellbind.github.io/css/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="Search">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="sitesearch" value="https://bellbind.github.io/" />
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="https://bellbind.github.io/">Home</a></td>
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <td><a class="main-nav-link" href="https://bellbind.github.io/tags/">Tags</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="https://bellbind.github.io/categories/">Categories</a></td>
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="sitesearch" value="https://bellbind.github.io/" />
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   	
+    	<aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      
+      <img id="avatar" src="https://www.gravatar.com/avatar/568d7226fb612f0e165463f69e102b1e?s=100&d=identicon"/>
+      
+      <h2 id="name">bellbind</h2>
+      
+      
+      
+          <a id="follow" href="https://gist.github.com/bellbind">
+              Follow
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        4
+        <span>Posts</span>
+      </div>
+      <div class="article-info-block">
+        
+          9
+        
+        <span>
+            Tags
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/bellbind" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//instagram.com/bellbind" target="_blank" title="Instagram"><i class="fa fa-instagram"></i></a></td>
+
+
+
+
+
+
+
+
+
+<td><a href="//medium.com/@bellbind" target="_blank" title="Medium"><i class="fa fa-medium"></i></a></td>
+
+
+
+
+
+<td><a href="//bellbind.tumblr.com" target="_blank" title="Tumblr"><i class="fa fa-tumblr"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//twitter.com/bellbind" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="https://bellbind.github.io/index.xml" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+    
+
+    <section id="main">
+    
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+
+        <header class="article-header">
+    <a href="https://bellbind.github.io/2017/07/08/implement-sha256-ecmascript/">
+    <h1 class="article-title" itemprop="name">
+        Implement SHA256 algorithm in pure ECMAScript
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-07-08 12:52:21 &#43;0900 JST" itemprop="datePublished">2017-07-08</time>
+            &middot;
+            2702
+            words
+            &middot;
+            13
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://bellbind.github.io/categories/2017-07">2017-07</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://bellbind.github.io/tags/es6">ES6</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://bellbind.github.io/tags/javascript">JavaScript</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://bellbind.github.io/tags/algorithm">algorithm</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://bellbind.github.io/tags/cryptography">cryptography</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>How to implement SHA256 hash digest algorithmn in <strong>pure ECMAScript</strong>;
+with no platform(node.js, modern browsers) dependent APIs.</p>
+
+<p>The running code is in
+<a href="https://gist.github.com/bellbind/1cfcc96514099fcebd455259b7249525">gist:bellbind/1cfcc96514099fcebd455259b7249525</a>.</p>
+
+<p></p>
+
+<h2 id="what-is-pure-ecmascript">What is pure ECMAScript</h2>
+
+<p>The pure ECMAScript is using the functions only in the current
+<a href="https://www.ecma-international.org/ecma-262/8.0/index.html">ECMAScript specification</a>
+which includes
+<a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-typedarray-objects">TypedArray feature</a>.</p>
+
+<p>The only exception is &ldquo;main&rdquo; entry point for the file.
+These dependent scripts put in the guards as node.js module like:</p>
+
+<pre><code class="language-js">if (typeof require === &quot;function&quot; &amp;&amp; require.main === module) {
+    // node.js entry point script
+} else if (typeof module !== &quot;undefined&quot;) {
+    // node.js module exports script
+}
+</code></pre>
+
+<p>at the bottom of script files.</p>
+
+<hr />
+
+<h2 id="overview-of-sha256-algorithm">Overview of SHA256 algorithm</h2>
+
+<p>SHA256 is a well-known hash digest algorithm. The wikipedia
+<a href="https://en.wikipedia.org/wiki/SHA-2">SHA-2 page</a> has entire SHA256 algorithm as
+<a href="https://en.wikipedia.org/wiki/SHA-2#Pseudocode">a pseudocode</a>.</p>
+
+<p>SHA256 is base on
+<a href="https://en.wikipedia.org/wiki/Merkle%E2%80%93Damg%C3%A5rd_construction">Merkle–Damgård hash function</a>
+framework as:</p>
+
+<ul>
+<li>Digest process
+
+<ul>
+<li>Start with Initialization Vector(IV)</li>
+<li>For each fixed length message chunk, mix it into IV</li>
+<li>Final IV data as a result hash digest</li>
+</ul></li>
+<li>Padding message with its length value
+
+<ul>
+<li>Pad the message as its length become multiple of the chunk size.</li>
+<li>Mark a bit <code>1</code> as a end of the message, then pad <code>0</code> with the last chunk tail:
+the mark become <code>0x80</code> when the message is a byte stream</li>
+<li>Embed the message &ldquo;bit&rdquo; length value in the end of the last chunk</li>
+<li>Hashing chunks become: <code>[message, 0x80, 0, ..., 0, message length as binary data]</code></li>
+</ul></li>
+</ul>
+
+<p>Then the SHA256 applies:</p>
+
+<ul>
+<li>Unsigned 32-bit integer(= uint32) arithmetics: cyclic shift, logical shift, and or not xor, add</li>
+<li><a href="https://en.wikipedia.org/wiki/Endianness#Big-endian">Big Endien byte-order</a>:
+between bytes and unsigned integer (bit-order is not applyed)</li>
+<li>Handle 256-bit (= 32-byte = 8-uint32) vector</li>
+</ul>
+
+<p>The constants are
+<a href="https://en.wikipedia.org/wiki/Nothing_up_my_sleeve_number">no-backdoor random number like values</a> as:</p>
+
+<ul>
+<li>IV: top 32-bit pattern of fractional part of <code>sqrt(p)</code>s on prime number sequence(p=2,3,5,7,11,&hellip;)</li>
+<li>Key: top 32-bit pattern of fractional part of <code>cbrt(p)</code>s on prime number sequence(p=2,3,5,7,11,&hellip;)</li>
+</ul>
+
+<hr />
+
+<h2 id="basic-knowledge-for-javascript">Basic Knowledge for JavaScript</h2>
+
+<h3 id="sha256-api-design-as-node-js-hash-functions"><code>sha256</code> API design: as node.js hash functions</h3>
+
+<p>I applied similar interface with <a href="https://nodejs.org/api/crypto.html#crypto_class_hash">node.js&rsquo;s hash object</a> as:</p>
+
+<ul>
+<li><code>hash = new sha256()</code>: returns the initial hash context.</li>
+<li><code>hash.update(fragment)</code>: process any size of <code>ArrayBuffer</code> like data fragment:
+(also includes node.js&rsquo;s <code>Buffer</code>). It returns <code>this</code> hash context.</li>
+<li><code>digestbuffer = hash.digest()</code>: finalize processing then return hash digest <code>ArrayBuffer</code>
+(node.js&rsquo;s encoding feature is omitted)</li>
+</ul>
+
+<p>The basic example is:</p>
+
+<pre><code class="language-js">const sha256 = require(&quot;./sha256&quot;);
+const data = Buffer.from(&quot;Hello World&quot;);
+const digest = new sha256().update(data).digest();
+console.log(Buffer.from(digest).toString(&quot;hex&quot;));
+</code></pre>
+
+<p>or stream style as:</p>
+
+<pre><code class="language-js">const hash = new sha256();
+stream.on(&quot;read&quot;, (err, buf) =&gt; {
+  if (!err) hash.update(buf);
+});
+stream.once(&quot;end&quot;, () =&gt; {
+  const digest = hash.digest();
+  console.log(Buffer.from(digest).toString(&quot;hex&quot;));
+});
+</code></pre>
+
+<h3 id="ecmascript-programming-cast-to-unsigned-32bit-integer">ECMAScript programming: cast to unsigned 32bit integer</h3>
+
+<p>The logical right shift <code>&gt;&gt;&gt;</code> returns the value as &ldquo;uint32&rdquo; (
+<a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-unsigned-right-shift-operator">spec</a>
+). Espacially <code>&gt;&gt;&gt; 0</code> just convert <code>uint32</code>.</p>
+
+<pre><code class="language-js">-1 &gt;&gt;&gt; 0 //== 4294967295 as UINT32_MAX
+</code></pre>
+
+<p>Put it every point on maybe overflow int32 operations: <code>a + b</code>, <code>~a</code>, <code>a &lt;&lt; n</code>, &hellip;.</p>
+
+<h3 id="ecmascript-programming-typedarray">ECMAScript programming: <code>TypedArray</code></h3>
+
+<p>In the program,  <code>ArrayBuffer</code>, <code>Uint8Array</code>, <code>Uint32Array</code> and <code>DataView</code> would be used.</p>
+
+<p><code>ArrayBuffer</code> does not directly access its content data.
+Accessing the content, use <code>Uint8Array</code>, <code>Uint32Array</code> and <code>DataView</code> as a slice view of <code>ArrayBuffer</code>.
+They have the <code>byteOffset</code>, <code>byteLength</code> and <code>buffer</code> properties for location the slice.</p>
+
+<ul>
+<li><code>ab = new ArrayBuffer(byteLength=0)</code>
+
+<ul>
+<li>data is initialized <code>0</code></li>
+</ul></li>
+<li><code>u8a = new Uint8Array(arraybuffer, byteOffset=0, length=arraybuffer.byteLength - byteOffset)</code>
+
+<ul>
+<li>note: <code>length</code> is a count of numbers (not <code>byteLength)</code></li>
+<li>note: <code>byteOffset</code> should not be negative offset</li>
+</ul></li>
+<li><code>u32a = new Uint32Array(arraybuffer, byteOffset=0, length)</code>
+
+<ul>
+<li>note1: <code>byteOffset</code> should be multiply of <code>4</code> (== <code>Uint32Array.BYTES_PER_ELEMENT</code>)</li>
+<li>note2: when omit <code>length</code> param, <code>buffer.byteLength - byteOffset</code> should be multiply of <code>4</code></li>
+</ul></li>
+<li><code>u32a = new Uint32Array(length)</code>
+
+<ul>
+<li>all element is initialized <code>0</code></li>
+</ul></li>
+<li><code>u32a = Uint32Array.from(arrayOrIter, mapfn=v=&gt;v)</code>
+
+<ul>
+<li>note: convert from standard <code>Array</code>, <code>TypedArray.from()</code> would be prefereable.</li>
+</ul></li>
+<li><code>u8a[i] = n</code> set the numnber <code>n</code> cast as uint8 value (same as <code>v &amp; 0xff</code>).</li>
+<li><code>u32a[i] = n</code> set the number <code>n</code> cast as uint32 value (same as <code>v &gt;&gt;&gt; 0</code>).</li>
+<li><code>u8a.set(u8a2, start)</code>: copy <code>u8a2</code> values in <code>u8a</code> from <code>start</code> offset
+
+<ul>
+<li>note: thrown range error when <code>u8a2.length</code> is larger than <code>u8a.length - start</code></li>
+</ul></li>
+<li><code>u8a.fill(n, start=0, end=this.length)</code>: set all element as <code>n</code> between from <code>start</code> offset to <code>end - 1</code> offset
+
+<ul>
+<li>note: negative offsets allowed</li>
+</ul></li>
+<li><code>u8a2 = u8a.subarray(start=0, end=this.length)</code>: make new relative slice view from <code>start</code> to <code>end</code> offset
+
+<ul>
+<li>note: negative offsets allowed</li>
+<li>usually make the subarray for applying to <code>set()</code> above</li>
+</ul></li>
+<li><code>u8a2 = u8a.slice(start=0, end=this.length)</code>: make new relative slice with copying from <code>start</code> to <code>end</code> offset
+
+<ul>
+<li>note: negative offsets allowed</li>
+</ul></li>
+</ul>
+
+<p>TypedArray is just a slice, don&rsquo;t forget <code>byteOffset</code> and <code>byteLength</code> to converting the element types:</p>
+
+<pre><code>// GOOD
+const u32a = new Uint32Array(u8a.buffer, u8a.byteOffset, u8a.byteLength);
+
+// BAD: the byteOffset become 0 and the byteLength become u8a.buffer.byteLength
+const u32a = new Uint32Array(u8a.buffer);
+</code></pre>
+
+<p><code>Uint32Array</code> is limited  align x4 slice and can access numbers as &ldquo;Little Endian&rdquo; byte-order
+(<code>SetValueInBuffer()</code>&rsquo;s last <code>isLittleEndien</code> param is <code>true</code> at
+<a href="https://www.ecma-international.org/ecma-262/8.0/index.html#sec-integerindexedelementset">the spec of <code>IntegerIndexedElementSet()</code></a> ).</p>
+
+<p>To use arbitrary byte offsets and <strong>&ldquo;Big Endian&rdquo;</strong> byte order, use <code>DataView</code> slice.</p>
+
+<ul>
+<li><code>dv = new DataView(arraybuffer, byteOffset=0, byteLengtharraybuffer.byteLength - byteOffset)</code>
+
+<ul>
+<li>note: <code>byteOffset</code> should not be negative offset</li>
+</ul></li>
+<li><code>uint32 = dv.getUint32(byteOffset, isLittleEndian=false)</code>
+
+<ul>
+<li>note: thrown range error when <code>dv.byteLength - byteOffset</code> less than 4</li>
+</ul></li>
+<li><code>dv.setUint32(byteOffset, uint32, isLittleEndian=false)</code></li>
+</ul>
+
+<hr />
+
+<h2 id="implementation-of-sha256-algorithm">Implementation of SHA256 algorithm</h2>
+
+<h3 id="prepare-the-constants">Prepare the constants</h3>
+
+<p>Usually preset the constant values in the source code for runtime performance.</p>
+
+<pre><code class="language-js">const K = Uint32Array.from([
+    0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5,
+    0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
+    0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3,
+    0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
+    0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc,
+    0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
+    0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7,
+    0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
+    0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13,
+    0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
+    0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3,
+    0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
+    0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5,
+    0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
+    0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208,
+    0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2,
+]);
+const H = Uint32Array.from([
+    0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a,
+    0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19,
+]);
+</code></pre>
+
+<p>It can also generate in the script as:</p>
+
+<pre><code class="language-js">function fractop32(v) {
+    // split `double` data as little endian 8 bytes 
+    const [b0, b1, b2, b3, b4, b5, b6, b7] =
+          new Uint8Array(Float64Array.of(v).buffer);
+    // exponential part of `double`
+    const e = (((b7 &amp; 0x7f) &lt;&lt; 4) | (b6 &gt;&gt; 4)) - 1023;
+    // upper 32bit of fraction part of `double`
+    const upper = (((b6 &amp; 0x0f) &lt;&lt; 28) | (b5 &lt;&lt; 20) | (b4 &lt;&lt; 12) |
+                   (b3 &lt;&lt; 4) | (b2 &gt;&gt;&gt; 4)) &gt;&gt;&gt; 0;
+    // lower 20bit of fraction part of `double`
+    const lower = ((b2 &amp; 0x0f) &lt;&lt; 16) | (b1 &lt;&lt; 8) | b0;
+    // slide fraction part with e (as fractional part of an absolute number)
+    if (e &lt; 0) return (((1 &lt;&lt; 31) &gt;&gt;&gt; (-e - 1)) | (upper &gt;&gt;&gt; -e)) &gt;&gt;&gt; 0;
+    return ((upper &lt;&lt; e) | (lower &gt;&gt;&gt; (20 - e))) &gt;&gt;&gt; 0;
+}
+function primes(len) {
+    // sieve of eratosthenes
+    if (len &lt; 1) return [];
+    const ps = [2];
+    for (let n = 3; ps.length &lt; len; n += 2) {
+        if (ps.every(p =&gt; n % p !== 0)) ps.push(n);
+    }
+    return ps;
+}
+
+const K = Uint32Array.from(primes(64), p =&gt; fractop32(Math.cbrt(p)));
+const H = Uint32Array.from(primes(8), p =&gt; fractop32(Math.sqrt(p)));
+</code></pre>
+
+<h3 id="sha256-class"><code>sha256</code> class</h3>
+
+<p>For above <code>sha256</code> API, the class layout as:</p>
+
+<pre><code class="language-js">class sha256 {
+    constructor() {
+        //prepare initial states
+    }
+    update(buffer) {
+        //process buffer as chunks, update states with chunks
+        return this;
+    }
+    digest() {
+        //process last chunks, then return the digest buffer
+    }
+}
+</code></pre>
+
+<h3 id="sha256-constructor"><code>sha256.constructor()</code></h3>
+
+<pre><code class="language-js">    constructor() {
+        this.hv = H.slice();
+        this.total = 0;
+        this.chunk = new Uint8Array(64);
+        this.filled = 0;
+    }
+</code></pre>
+
+<p>Properties of the processing state are:</p>
+
+<ul>
+<li><code>hv</code>: Initialization Vector (also result digest), copy from constants <code>H</code></li>
+<li><code>total</code>: total <strong>byte length</strong> of processing buffers
+
+<ul>
+<li>note: this implementation limited total data byte length &lt; 2^53 (= 8-peta byte), not 2^64-1</li>
+</ul></li>
+<li><code>chunk</code>: at most 512-bit(= 64-byte) message chunk remainder</li>
+<li><code>filled</code>: remainder byte length (would be processed next)
+
+<ul>
+<li>note1: <code>filled</code> never reached to <code>64</code></li>
+<li>note2: negative <code>filled</code> means after processing finished</li>
+</ul></li>
+</ul>
+
+<p>On <code>update(buffer)</code>, it may remain a last less than 64-byte chunk.
+The remained <code>chunk</code> would be processed in <code>digest()</code>.</p>
+
+<h3 id="sha256-update-buffer"><code>sha256.update(buffer)</code></h3>
+
+<pre><code class="language-js">    update(buffer) {
+        const {hv, chunk, filled} = this;
+        if (filled &lt; 0) return this;
+        const buf = new Uint8Array(buffer);
+        const bytes = buf.byteLength;
+        const u8a = new Uint8Array(filled + bytes);
+        u8a.set(chunk.subarray(0, filled));
+        u8a.set(buf, filled);
+        let offs = 0;
+        for (let next = offs + 64; next &lt;= bytes; next += 64) {
+            update(hv, u8a.subarray(offs, next));
+            offs = next;
+        }
+        chunk.set(u8a.subarray(offs));
+        this.filled = bytes - offs;
+        this.total += bytes;
+        return this;
+    }
+</code></pre>
+
+<p>Concat <code>buffer</code> and <code>chunk</code> then split with each 64-byte to apply local function <code>update(hv, chunk)</code>:</p>
+
+<pre><code class="language-js">function update(hv, chunk) {
+    const w = new Uint32Array(64);
+    const cd = new DataView(chunk.buffer, chunk.byteOffset, chunk.byteLength);
+    for (let i = 0; i &lt; 16; i++) {
+        w[i] = cd.getUint32(i * 4, false);
+    }
+    for (let i = 16; i &lt; 64; i++) {
+        const w16 = w[i - 16], w15 = w[i - 15], w7 = w[i - 7], w2 = w[i - 2];
+        const s0 = (rotr(w15, 7) ^ rotr(w15, 18) ^ (w15 &gt;&gt;&gt; 3)) &gt;&gt;&gt; 0;
+        const s1 = (rotr(w2, 17) ^ rotr(w2, 19) ^ (w2 &gt;&gt;&gt; 10)) &gt;&gt;&gt; 0;
+        w[i] = (w16 + s0 + w7 + s1) &gt;&gt;&gt; 0;
+    }
+
+    const data = step(0, w, ...hv);
+    hv.set(hv.map((v, i) =&gt; (v + data[i]) &gt;&gt;&gt; 0));
+}
+</code></pre>
+
+<p>The <code>hv</code> is mixed with a <code>chunk</code> in 64 steps, then put back into the <code>hv</code>.</p>
+
+<p>Before applying steps, <code>chunk</code> transition is prepared as <code>w[64]</code>.
+The first 16 elements are just chunk data itself <strong>as Big Endian</strong>.
+The latter is mixed with former 4 elements.</p>
+
+<p>The <code>rotr(v, n)</code> is unsigned 32-bit right cyclic shift operation:</p>
+
+<pre><code class="language-js">function rotr(v, n) {
+    return ((v &gt;&gt;&gt; n) | (v &lt;&lt; (32 - n))) &gt;&gt;&gt; 0;
+}
+</code></pre>
+
+<p>The <code>step(n, w, a, b, c, d, e, f, g, h)</code> is as a tailcall recursive function
+that represents a step of mixing and rotating vector elements:</p>
+
+<pre><code class="language-js">function step(i, w, a, b, c, d, e, f, g, h) {
+    if (i === 64) return [a, b, c, d, e, f, g, h];
+    // t1 from e, f, g, h (and K[i], w[i])
+    const s1 = (rotr(e, 6) ^ rotr(e, 11) ^ rotr(e, 25)) &gt;&gt;&gt; 0;
+    const ch = ((e &amp; f) ^ ((~e &gt;&gt;&gt; 0) &amp; g)) &gt;&gt;&gt; 0;
+    const t1 = (h + s1 + ch + K[i] + w[i]) &gt;&gt;&gt; 0;
+    // t2 from a, b, c
+    const s0 = (rotr(a, 2) ^ rotr(a, 13) ^ rotr(a, 22)) &gt;&gt;&gt; 0;
+    const maj = ((a &amp; b) ^ (a &amp; c) ^ (b &amp; c)) &gt;&gt;&gt; 0;
+    const t2 = (s0 + maj) &gt;&gt;&gt; 0;
+    // rotating vars a,b,c,d,e,f,g,h with mixed d and h
+    return step(i + 1, w, (t1 + t2) &gt;&gt;&gt; 0, a, b, c, (d + t1) &gt;&gt;&gt; 0, e, f, g);
+}
+</code></pre>
+
+<ul>
+<li>The <code>t1</code> is non-linear <strong>mixing of <code>e</code>, <code>f</code>, <code>g</code>, <code>h</code></strong> and chunk <code>w[i]</code> and key constant <code>K[i]</code>.</li>
+<li>The <code>t2</code> is non-linear <strong>mixing of <code>a</code>, <code>b</code>, <code>c</code></strong>.</li>
+</ul>
+
+<p>At the step,  <code>d</code> turns to <code>d + t1</code> and <code>h</code> turns to <code>t1 + t2</code>.
+Then go next step with <strong>rotating variables</strong>
+from <code>[a, b, c, d, e, f, g, h]</code> to <code>[new h, a, b, c, new d, e, f, g]</code>.</p>
+
+<p>For example, to implements with loop as:</p>
+
+<pre><code class="language-js">function update(hv, chunk) {
+    //...
+    let [a, b, c, d, e, f, g, h] = hv;
+    for (let i = 0; i &lt; 64; i++) {
+        const s1 = (rotr(e, 6) ^ rotr(e, 11) ^ rotr(e, 25)) &gt;&gt;&gt; 0;
+        const ch = ((e &amp; f) ^ ((~e &gt;&gt;&gt; 0) &amp; g)) &gt;&gt;&gt; 0;
+        const t1 = (h + s1 + ch + K[i] + w[i]) &gt;&gt;&gt; 0;
+        const s0 = (rotr(a, 2) ^ rotr(a, 13) ^ rotr(a, 22)) &gt;&gt;&gt; 0;
+        const maj = ((a &amp; b) ^ (a &amp; c) ^ (b &amp; c)) &gt;&gt;&gt; 0;
+        const t2 = (s0 + maj) &gt;&gt;&gt; 0;
+        h = g; g = f; f = e; e = (d + t1) &gt;&gt;&gt; 0;
+        d = c; c = b; b = a; a = (t1 + t2) &gt;&gt;&gt; 0;
+    }
+    hv[0] = (hv[0] + a) &gt;&gt;&gt; 0; hv[1] = (hv[1] + b) &gt;&gt;&gt; 0;
+    hv[2] = (hv[2] + c) &gt;&gt;&gt; 0; hv[3] = (hv[3] + d) &gt;&gt;&gt; 0;
+    hv[4] = (hv[4] + e) &gt;&gt;&gt; 0; hv[5] = (hv[5] + f) &gt;&gt;&gt; 0;
+    hv[6] = (hv[6] + g) &gt;&gt;&gt; 0; hv[7] = (hv[7] + h) &gt;&gt;&gt; 0;
+}
+</code></pre>
+
+<p>But the loop code is slower than the recursive function code in JavaScript engines.</p>
+
+<h3 id="sha256-digest"><code>sha256.digest()</code></h3>
+
+<pre><code class="language-js">    digest() {
+        if (this.filled &gt;= 0) {
+            last(this);
+            this.filled = -1;
+        }
+        const digest = new DataView(new ArrayBuffer(32));
+        this.hv.forEach((v, i) =&gt; {
+            digest.setUint32(i * 4, v, false);
+        });
+        return digest.buffer;
+    }
+</code></pre>
+
+<p>The <code>last(this)</code> process the last remainder chunk and padding data.
+For stop invalid processing called  <code>update()</code> or <code>digest()</code> after the <code>last()</code> process,
+set <code>filled</code> value negative.
+Then the result digest value in <code>hv</code> convert <strong>Big Endian</strong> byte stream,
+and returns it.</p>
+
+<p>The <code>last(ctx)</code> marks the bit 1, fills 0, and then embeds length value as a last chunk:</p>
+
+<pre><code class="language-js">function last(ctx) {
+    const {hv, total, chunk, fulled} = ctx;
+    chunk[filled] = 0x80;
+    let start0 = filled + 1;
+    if (start0 + 8 &gt; 64) {
+        chunk.fill(0, start0);
+        update(hv, chunk);
+        start0 = 0;
+    }
+    chunk.fill(0, start0, -8);
+    
+    const dv = new DataView(chunk.buffer, chunk.byteLength - 8);
+    const b30 = 1 &lt;&lt; 29; // note: bits is bytes * 8, lowwer use 29bit
+    const low = total % b30;
+    const high = (total - low) / b30;
+    dv.setUint32(0, high, false);
+    dv.setUint32(4, (low &lt;&lt; 3) &gt;&gt;&gt; 0, false);
+    update(hv, chunk);
+}
+</code></pre>
+
+<p>The last padding with reminder is 64-byte or 128-byte.
+Inside the <code>if</code> block, it makes the first 64-bit as <code>[message..., 0x80, 0, ..., 0]</code>
+then <code>update()</code> it. then the chunk as <code>[0, ...., 0]</code>.</p>
+
+<p>latter part is embeding &ldquo;bit length&rdquo; as <strong>64-bit big endian</strong> value.
+The &ldquo;left shift 3&rdquo; means &ldquo;multiply 8&rdquo; as byte length to bit length.</p>
+
+<h2 id="the-last-part-for-node-js-entry-points">The last part: for node.js entry points</h2>
+
+<p>The &ldquo;sha256.js&rdquo; has the entry point for &ldquo;node.js&rdquo;.</p>
+
+<pre><code class="language-js">if (typeof require === &quot;function&quot; &amp;&amp; require.main === module) {
+    const fs = require(&quot;fs&quot;);
+    const names = process.argv.slice(2);
+    names.forEach(name =&gt; {
+        const hash = new sha256();
+        const rs = fs.createReadStream(name);
+        rs.on(&quot;readable&quot;, _ =&gt; {
+            const buf = rs.read();
+            if (buf) hash.update(buf);
+        });
+        rs.on(&quot;end&quot;, _ =&gt; {
+            console.log(
+                `${Buffer.from(hash.digest()).toString(&quot;hex&quot;)}  ${name}`);
+        });
+    });
+} else if (typeof module !== &quot;undefined&quot;) {
+    module.exports = sha256;
+}
+</code></pre>
+
+<p>The main code generates hex digest of commandline parameter files.
+The output format is compatible with <a href="https://linux.die.net/man/1/sha256sum">&ldquo;sha256sum/gsha256sum&rdquo;</a>
+command of &ldquo;coreutils&rdquo;.</p>
+
+<pre><code class="language-bash">$ touch empty.txt
+$ node sha256.js empty.txt
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  empty.txt
+</code></pre>
+
+<p>You can compare results or performances with the existing implementations as execubales, e.g.:</p>
+
+<pre><code class="language-bash">$ dd if=/dev/zero bs=1m count=512 of=512M.data
+512+0 records in
+512+0 records out
+536870912 bytes transferred in 0.458462 secs (1171025978 bytes/sec)
+$ time gsha256sum 512M.data 
+9acca8e8c22201155389f65abbf6bc9723edc7384ead80503839f49dcc56d767  512M.data
+
+real	0m3.628s
+user	0m3.237s
+sys	0m0.297s
+
+$ time node sha256.js 512M.data 
+9acca8e8c22201155389f65abbf6bc9723edc7384ead80503839f49dcc56d767  512M.data
+
+real	1m11.340s
+user	1m10.616s
+sys	0m0.756s
+
+</code></pre>
+
+<p>Note: 512M bytes is 4G bits that is <strong>over 32-bit range</strong>.
+It is one of important inputs for testing hash functions.</p>
+
+<hr />
+
+<h2 id="appendix-note-on-real-world-implementations-of-hash-functions">Appendix: Note on real world implementations of hash functions</h2>
+
+<h3 id="not-use-loop-for-steps-in-update">Not use loop for steps in update</h3>
+
+<p>When using loop, rotating variables requres n+1 assignments.
+But in a step, only few values are updated (e.g. just 2 in 8 vars as SHA256).</p>
+
+<p>So avoiding needless assignments,  manually extracted loops (called &ldquo;unrolling&rdquo;) on the code
+with steos as inline macro, e.g.</p>
+
+<pre><code class="language-c">#define STEP(a, b, c, d, e, f, g, w, k) {uint32_t t = T1(e,f,g,h,w,k); d += t; h = t + T2(a,b,c);}
+
+STEP(a, b, c, d, e, f, g, h, w[0], K[0]);
+STEP(h, a, b, c, d, e, f, g, w[1], K[1]);
+STEP(g, h, a, b, c, d, e, f, w[2], K[2]);
+STEP(f, g, h, a, b, c, d, e, w[3], K[3]);
+//...
+STEP(b, c, d, e, f, g, h, a, w[63], K[63]);
+</code></pre>
+
+<h2 id="complex-byte-order-handling">Complex byte order handling</h2>
+
+<p>Usual hash function embeds byte-order maniputation code.
+The code usually complex with many bit-mask, bit shift, bitwise-and/or, operations.
+More worsely, these code also mix every host-emndien cases with <code>#ifdef</code> macros.</p>
+
+<p>To read the code, it is is important to ignore the complex bit operations seems byte-order translations.</p>
+
+<p>But these are old fasion codes.
+To write the modern C99/C11 code, using <code>inline</code> functions with <code>union</code> variables
+instead of macros and bit shifts as:</p>
+
+<pre><code class="language-c">static inline uint32_t big32(uint32_t v) {
+#ifdef WORDS_BIGENDIAN
+  return v;
+#else
+  union {
+    struct {uint8_t b0, b1, b2, b3;};
+    uint32_t v;
+  } le = {.v = v};
+  union {
+    struct {uint8_t b3, b2, b1, b0;};
+    uint32_t v;
+  } be = {.b0 = le.b0, .b1 = le.b1, .b2 = le.b2, .b3 = le.b3};
+  return be.v;
+#endif
+}
+</code></pre>
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://bellbind.github.io/2017/07/08/implement-sha256-ecmascript/" data-id="9c2ca51843ee2051514314b7b8cd305a" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+
+    
+<nav id="article-nav">
+    
+    <a href="https://bellbind.github.io/2017/07/03/compare-wasm/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">Comparing WebAssembly performance with asm.js and plain ES6</div>
+    </a>
+    
+
+    
+</nav>
+
+
+</article>
+
+
+
+    </section>
+
+   	
+    	<aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Recents
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://bellbind.github.io/2017/07/08/implement-sha256-ecmascript/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://bellbind.github.io/categories/2017-07">
+                        2017-07
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://bellbind.github.io/2017/07/08/implement-sha256-ecmascript/" class="title">Implement SHA256 algorithm in pure ECMAScript</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-07-08 12:52:21 &#43;0900 JST" itemprop="datePublished">2017-07-08</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://bellbind.github.io/2017/07/03/compare-wasm/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://bellbind.github.io/categories/2017-07">
+                        2017-07
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://bellbind.github.io/2017/07/03/compare-wasm/" class="title">Comparing WebAssembly performance with asm.js and plain ES6</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-07-03 01:45:18 &#43;0900 JST" itemprop="datePublished">2017-07-03</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://bellbind.github.io/2017/07/01/hugo-support/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://bellbind.github.io/categories/2017-07">
+                        2017-07
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://bellbind.github.io/2017/07/01/hugo-support/" class="title">hugoの支援コマンド</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-07-01 02:47:01 &#43;0900 JST" itemprop="datePublished">2017-07-01</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://bellbind.github.io/2017/06/30/hello-hugo/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://bellbind.github.io/categories/2017-06">
+                        2017-06
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://bellbind.github.io/2017/06/30/hello-hugo/" class="title">Hello Hugo</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-06-30 23:13:45 &#43;0900 JST" itemprop="datePublished">2017-06-30</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://bellbind.github.io/categories/2017-06">
+                    2017-06
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://bellbind.github.io/categories/2017-07">
+                    2017-07
+                </a>
+                <span class="category-list-count">3</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tags
+    </h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://bellbind.github.io/tags/algorithm">
+                    algorithm
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://bellbind.github.io/tags/asm.js">
+                    asm.js
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://bellbind.github.io/tags/bash">
+                    bash
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://bellbind.github.io/tags/cryptography">
+                    cryptography
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://bellbind.github.io/tags/es6">
+                    es6
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://bellbind.github.io/tags/github">
+                    github
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://bellbind.github.io/tags/hugo">
+                    hugo
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://bellbind.github.io/tags/javascript">
+                    javascript
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://bellbind.github.io/tags/webassemby">
+                    webassemby
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tag cloud
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="https://bellbind.github.io/tags/algorithm" style="font-size: 12px;">algorithm</a>
+        
+        
+        <a href="https://bellbind.github.io/tags/asm.js" style="font-size: 12px;">asm.js</a>
+        
+        
+        <a href="https://bellbind.github.io/tags/bash" style="font-size: 12px;">bash</a>
+        
+        
+        <a href="https://bellbind.github.io/tags/cryptography" style="font-size: 12px;">cryptography</a>
+        
+        
+        <a href="https://bellbind.github.io/tags/es6" style="font-size: 12px;">es6</a>
+        
+        
+        <a href="https://bellbind.github.io/tags/github" style="font-size: 12px;">github</a>
+        
+        
+        <a href="https://bellbind.github.io/tags/hugo" style="font-size: 12px;">hugo</a>
+        
+        
+        <a href="https://bellbind.github.io/tags/javascript" style="font-size: 12px;">javascript</a>
+        
+        
+        <a href="https://bellbind.github.io/tags/webassemby" style="font-size: 12px;">webassemby</a>
+        
+    </div>
+</div>
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017
+      Powered by <a href="//gohugo.io">Hugo</a>. Theme by <a href="https://github.com/digitalcraftsman/hugo-icarus-theme">Icarus</a>.
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://bellbind.github.io/fancybox/jquery.fancybox.pack.js"></script>
+<script src="https://bellbind.github.io/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+</body>
+</html>
