@@ -59,7 +59,7 @@ gist:bellbind/1cfcc96514099fcebd455259b7249525.
 
 
 <meta itemprop="dateModified" content="2017-07-08T12:52:21&#43;09:00" />
-<meta itemprop="wordCount" content="2702">
+<meta itemprop="wordCount" content="2728">
 
 
 
@@ -307,7 +307,7 @@ gist:bellbind/1cfcc96514099fcebd455259b7249525.
             <i class="fa fa-calendar"></i>
             <time datetime="2017-07-08 12:52:21 &#43;0900 JST" itemprop="datePublished">2017-07-08</time>
             &middot;
-            2702
+            2728
             words
             &middot;
             13
@@ -684,20 +684,20 @@ The remained <code>chunk</code> would be processed in <code>digest()</code>.</p>
 <h3 id="sha256-update-buffer"><code>sha256.update(buffer)</code></h3>
 
 <pre><code class="language-js">    update(buffer) {
-        const {hv, chunk, filled} = this;
+        let {filled} = this;
         if (filled &lt; 0) return this;
+        const {hv, chunk} = this;
         const buf = new Uint8Array(buffer);
         const bytes = buf.byteLength;
-        const u8a = new Uint8Array(filled + bytes);
-        u8a.set(chunk.subarray(0, filled));
-        u8a.set(buf, filled);
         let offs = 0;
-        for (let next = offs + 64; next &lt;= bytes; next += 64) {
-            update(hv, u8a.subarray(offs, next));
+        for (let next = 64 - filled; next &lt;= bytes; next += 64) {
+            chunk.set(buf.subarray(offs, next), filled);
+            update(hv, chunk);
+            filled = 0;
             offs = next;
         }
-        chunk.set(u8a.subarray(offs));
-        this.filled = bytes - offs;
+        chunk.set(buf.subarray(offs), filled);
+        this.filled = filled + bytes - offs;
         this.total += bytes;
         return this;
     }
@@ -761,7 +761,7 @@ that represents a step of mixing and rotating vector elements:</p>
 
 <p>At the step,  <code>d</code> turns to <code>d + t1</code> and <code>h</code> turns to <code>t1 + t2</code>.
 Then go next step with <strong>rotating variables</strong>
-from <code>[a, b, c, d, e, f, g, h]</code> to <code>[new h, a, b, c, new d, e, f, g]</code>.</p>
+from <code>[a, b, c, d, e, f, g, h]</code> to <code>[new_h, a, b, c, new_d, e, f, g]</code>.</p>
 
 <p>For example, to implements with loop as:</p>
 
@@ -795,9 +795,7 @@ from <code>[a, b, c, d, e, f, g, h]</code> to <code>[new h, a, b, c, new d, e, f
             this.filled = -1;
         }
         const digest = new DataView(new ArrayBuffer(32));
-        this.hv.forEach((v, i) =&gt; {
-            digest.setUint32(i * 4, v, false);
-        });
+        this.hv.forEach((v, i) =&gt; {digest.setUint32(i * 4, v, false);});
         return digest.buffer;
     }
 </code></pre>
@@ -844,19 +842,26 @@ The &ldquo;left shift 3&rdquo; means &ldquo;multiply 8&rdquo; as byte length to 
 
 <pre><code class="language-js">if (typeof require === &quot;function&quot; &amp;&amp; require.main === module) {
     const fs = require(&quot;fs&quot;);
-    const names = process.argv.slice(2);
-    names.forEach(name =&gt; {
+    const digestFile = name =&gt; new Promise((resolve, reject) =&gt; {
+        //const hash = require(&quot;crypto&quot;).createHash(&quot;sha256&quot;);
         const hash = new sha256();
         const rs = fs.createReadStream(name);
         rs.on(&quot;readable&quot;, _ =&gt; {
             const buf = rs.read();
             if (buf) hash.update(buf);
         });
-        rs.on(&quot;end&quot;, _ =&gt; {
-            console.log(
-                `${Buffer.from(hash.digest()).toString(&quot;hex&quot;)}  ${name}`);
-        });
+        rs.on(&quot;end&quot;, () =&gt; {resolve(hash.digest());});
+        rs.on(&quot;error&quot;, error =&gt; {reject(error);});
     });
+    
+    const names = process.argv.slice(2);
+    (async function () {
+        for (const name of names) {
+            const hex = Buffer.from(await digestFile(name)).toString(&quot;hex&quot;);
+            console.log(`${hex}  ${name}`);
+        }
+    })().catch(console.log);
+
 } else if (typeof module !== &quot;undefined&quot;) {
     module.exports = sha256;
 }
@@ -887,13 +892,13 @@ sys	0m0.297s
 $ time node sha256.js 512M.data 
 9acca8e8c22201155389f65abbf6bc9723edc7384ead80503839f49dcc56d767  512M.data
 
-real	1m11.340s
-user	1m10.616s
-sys	0m0.756s
+real	1m9.280s
+user	1m8.905s
+sys	0m0.776s
 
 </code></pre>
 
-<p>Note: 512M bytes is 4G bits that is <strong>over 32-bit range</strong>.
+<p>Note: 512M bytes is 4G bits as <strong>over 32-bit range length</strong>.
 It is one of important inputs for testing hash functions.</p>
 
 <hr />
