@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cryptography on bellbind.github.io</title>
-    <link>https://bellbind.github.io/tags/cryptography/</link>
-    <description>Recent content in Cryptography on bellbind.github.io</description>
+    <title>C on bellbind.github.io</title>
+    <link>https://bellbind.github.io/tags/c/</link>
+    <description>Recent content in C on bellbind.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [Icarus](https://github.com/digitalcraftsman/hugo-icarus-theme).</copyright>
     <lastBuildDate>Sun, 16 Jul 2017 21:24:40 +0900</lastBuildDate>
     
-	<atom:link href="https://bellbind.github.io/tags/cryptography/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://bellbind.github.io/tags/c/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -30,21 +30,6 @@ Entire codes in gist are:&lt;/p&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;These hash are similar algorithms. Once writing one of them, writing others would be easy.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Implement SHA256 algorithm in pure ECMAScript</title>
-      <link>https://bellbind.github.io/2017/07/08/implement-sha256-ecmascript/</link>
-      <pubDate>Sat, 08 Jul 2017 12:52:21 +0900</pubDate>
-      
-      <guid>https://bellbind.github.io/2017/07/08/implement-sha256-ecmascript/</guid>
-      <description>&lt;p&gt;How to implement SHA256 hash digest algorithmn in &lt;strong&gt;pure ECMAScript&lt;/strong&gt;;
-with no platform(node.js, modern browsers) dependent APIs.&lt;/p&gt;
-
-&lt;p&gt;The running code is in
-&lt;a href=&#34;https://gist.github.com/bellbind/1cfcc96514099fcebd455259b7249525&#34;&gt;gist:bellbind/1cfcc96514099fcebd455259b7249525&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>

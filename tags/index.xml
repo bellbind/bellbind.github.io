@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [Icarus](https://github.com/digitalcraftsman/hugo-icarus-theme).</copyright>
-    <lastBuildDate>Sat, 08 Jul 2017 12:52:21 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 16 Jul 2017 21:24:40 +0900</lastBuildDate>
     
 	<atom:link href="https://bellbind.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>Algorithm</title>
       <link>https://bellbind.github.io/tags/algorithm/</link>
-      <pubDate>Sat, 08 Jul 2017 12:52:21 +0900</pubDate>
+      <pubDate>Sun, 16 Jul 2017 21:24:40 +0900</pubDate>
       
       <guid>https://bellbind.github.io/tags/algorithm/</guid>
       <description></description>
@@ -40,11 +40,29 @@
     </item>
     
     <item>
+      <title>C</title>
+      <link>https://bellbind.github.io/tags/c/</link>
+      <pubDate>Sun, 16 Jul 2017 21:24:40 +0900</pubDate>
+      
+      <guid>https://bellbind.github.io/tags/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Cryptography</title>
       <link>https://bellbind.github.io/tags/cryptography/</link>
-      <pubDate>Sat, 08 Jul 2017 12:52:21 +0900</pubDate>
+      <pubDate>Sun, 16 Jul 2017 21:24:40 +0900</pubDate>
       
       <guid>https://bellbind.github.io/tags/cryptography/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Emscripten</title>
+      <link>https://bellbind.github.io/tags/emscripten/</link>
+      <pubDate>Sun, 16 Jul 2017 21:24:40 +0900</pubDate>
+      
+      <guid>https://bellbind.github.io/tags/emscripten/</guid>
       <description></description>
     </item>
     

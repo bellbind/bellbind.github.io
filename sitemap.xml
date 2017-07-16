@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://bellbind.github.io/2017/07/16/hash-functions-with-c/</loc>
+    <lastmod>2017-07-16T21:24:40+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://bellbind.github.io/2017/07/08/implement-sha256-ecmascript/</loc>
     <lastmod>2017-07-08T12:52:21+09:00</lastmod>
   </url>
@@ -30,13 +35,13 @@
   
   <url>
     <loc>https://bellbind.github.io/categories/2017-07/</loc>
-    <lastmod>2017-07-08T12:52:21+09:00</lastmod>
+    <lastmod>2017-07-16T21:24:40+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://bellbind.github.io/tags/algorithm/</loc>
-    <lastmod>2017-07-08T12:52:21+09:00</lastmod>
+    <lastmod>2017-07-16T21:24:40+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -53,6 +58,12 @@
   </url>
   
   <url>
+    <loc>https://bellbind.github.io/tags/c/</loc>
+    <lastmod>2017-07-16T21:24:40+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://bellbind.github.io/categories/</loc>
     <lastmod>2017-06-30T23:13:45+09:00</lastmod>
     <priority>0</priority>
@@ -60,7 +71,13 @@
   
   <url>
     <loc>https://bellbind.github.io/tags/cryptography/</loc>
-    <lastmod>2017-07-08T12:52:21+09:00</lastmod>
+    <lastmod>2017-07-16T21:24:40+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://bellbind.github.io/tags/emscripten/</loc>
+    <lastmod>2017-07-16T21:24:40+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -90,13 +107,13 @@
   
   <url>
     <loc>https://bellbind.github.io/post/</loc>
-    <lastmod>2017-07-08T12:52:21+09:00</lastmod>
+    <lastmod>2017-07-16T21:24:40+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://bellbind.github.io/tags/</loc>
-    <lastmod>2017-07-08T12:52:21+09:00</lastmod>
+    <lastmod>2017-07-16T21:24:40+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -108,7 +125,7 @@
   
   <url>
     <loc>https://bellbind.github.io/</loc>
-    <lastmod>2017-07-08T12:52:21+09:00</lastmod>
+    <lastmod>2017-07-16T21:24:40+09:00</lastmod>
     <priority>0</priority>
   </url>
   

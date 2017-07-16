@@ -7,10 +7,32 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [Icarus](https://github.com/digitalcraftsman/hugo-icarus-theme).</copyright>
-    <lastBuildDate>Sat, 08 Jul 2017 12:52:21 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 16 Jul 2017 21:24:40 +0900</lastBuildDate>
     
 	<atom:link href="https://bellbind.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Implement Hash functions with C</title>
+      <link>https://bellbind.github.io/2017/07/16/hash-functions-with-c/</link>
+      <pubDate>Sun, 16 Jul 2017 21:24:40 +0900</pubDate>
+      
+      <guid>https://bellbind.github.io/2017/07/16/hash-functions-with-c/</guid>
+      <description>&lt;p&gt;Note about imprementing major cryptographic Hash functions(SHA256, SHA512, SHA1, MD5, RIPEMD169)  with standard C11.
+Entire codes in gist are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/bellbind/2fd66a09340942b9845ef432a5c8c419&#34;&gt;SHA256&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/bellbind/ff05971591d4fca28f001c143d46ae5f&#34;&gt;SHA1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/bellbind/6cbaa8023e7588c6cbd17756f7c3ba42&#34;&gt;MD5&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/bellbind/d9368aafc1d9ee958f1d09c9305f48a9&#34;&gt;RIPEMD160&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/bellbind/030c8786e53af6c763fdf0e3fdbecbcc&#34;&gt;SHA512&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These hash are similar algorithms. Once writing one of them, writing others would be easy.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Implement SHA256 algorithm in pure ECMAScript</title>

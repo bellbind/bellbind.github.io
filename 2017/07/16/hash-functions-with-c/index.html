@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Hello Hugo &middot; bellbind.github.io</title>
+    <title>Implement Hash functions with C &middot; bellbind.github.io</title>
     <meta name="generator" content="Hugo 0.25.1" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,7 +10,7 @@
       <meta name="description" content="hello">
     
     
-    <link rel="canonical" href="https://bellbind.github.io/2017/06/30/hello-hugo/"/>
+    <link rel="canonical" href="https://bellbind.github.io/2017/07/16/hash-functions-with-c/"/>
     <link rel="icon" href="https://bellbind.github.io/favicon.ico">
     <link rel="apple-touch-icon" href="https://bellbind.github.io/apple-touch-icon.png"/>
     <link rel="stylesheet" href="https://bellbind.github.io/css/style.css">
@@ -20,17 +20,28 @@
     
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <meta property="og:title" content="Hello Hugo" />
-<meta property="og:description" content="github pagesをhugoにした話。
+    <meta property="og:title" content="Implement Hash functions with C" />
+<meta property="og:description" content="Note about imprementing major cryptographic Hash functions(SHA256, SHA512, SHA1, MD5, RIPEMD169)  with standard C11.
+Entire codes in gist are:
+
+
+SHA256
+SHA1
+MD5
+RIPEMD160
+SHA512
+
+
+These hash are similar algorithms. Once writing one of them, writing others would be easy.
 
 " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://bellbind.github.io/2017/06/30/hello-hugo/" />
+<meta property="og:url" content="https://bellbind.github.io/2017/07/16/hash-functions-with-c/" />
 
 
 
-<meta property="article:published_time" content="2017-06-30T23:13:45&#43;09:00"/>
-<meta property="article:modified_time" content="2017-06-30T23:13:45&#43;09:00"/>
+<meta property="article:published_time" content="2017-07-16T21:24:40&#43;09:00"/>
+<meta property="article:modified_time" content="2017-07-16T21:24:40&#43;09:00"/>
 
 
 
@@ -44,18 +55,29 @@
 
     
     
-<meta itemprop="name" content="Hello Hugo">
-<meta itemprop="description" content="github pagesをhugoにした話。
+<meta itemprop="name" content="Implement Hash functions with C">
+<meta itemprop="description" content="Note about imprementing major cryptographic Hash functions(SHA256, SHA512, SHA1, MD5, RIPEMD169)  with standard C11.
+Entire codes in gist are:
+
+
+SHA256
+SHA1
+MD5
+RIPEMD160
+SHA512
+
+
+These hash are similar algorithms. Once writing one of them, writing others would be easy.
 
 ">
 
 
-<meta itemprop="dateModified" content="2017-06-30T23:13:45&#43;09:00" />
-<meta itemprop="wordCount" content="535">
+<meta itemprop="dateModified" content="2017-07-16T21:24:40&#43;09:00" />
+<meta itemprop="wordCount" content="1640">
 
 
 
-<meta itemprop="keywords" content="hugo," />
+<meta itemprop="keywords" content="c,algorithm,cryptography,emscripten," />
 
     
 
@@ -63,9 +85,20 @@
 
 
 
-<meta name="twitter:text:title" content="Hello Hugo"/>
-<meta name="twitter:title" content="Hello Hugo"/>
-<meta name="twitter:description" content="github pagesをhugoにした話。
+<meta name="twitter:text:title" content="Implement Hash functions with C"/>
+<meta name="twitter:title" content="Implement Hash functions with C"/>
+<meta name="twitter:description" content="Note about imprementing major cryptographic Hash functions(SHA256, SHA512, SHA1, MD5, RIPEMD169)  with standard C11.
+Entire codes in gist are:
+
+
+SHA256
+SHA1
+MD5
+RIPEMD160
+SHA512
+
+
+These hash are similar algorithms. Once writing one of them, writing others would be easy.
 
 "/>
 <meta name="twitter:site" content="@bellbind"/>
@@ -283,9 +316,9 @@
         
 
         <header class="article-header">
-    <a href="https://bellbind.github.io/2017/06/30/hello-hugo/">
+    <a href="https://bellbind.github.io/2017/07/16/hash-functions-with-c/">
     <h1 class="article-title" itemprop="name">
-        Hello Hugo
+        Implement Hash functions with C
     </h1>
     </a>
     <div class="article-meta">
@@ -293,12 +326,12 @@
         
         <div class="article-date">
             <i class="fa fa-calendar"></i>
-            <time datetime="2017-06-30 23:13:45 &#43;0900 JST" itemprop="datePublished">2017-06-30</time>
+            <time datetime="2017-07-16 21:24:40 &#43;0900 JST" itemprop="datePublished">2017-07-16</time>
             &middot;
-            535
+            1640
             words
             &middot;
-            2
+            8
             minute read
         </div>
         
@@ -309,7 +342,7 @@
                 <i class="fa fa-folder"></i>
                 
                 
-                <a class="article-category-link" href="https://bellbind.github.io/categories/2017-06">2017-06</a>
+                <a class="article-category-link" href="https://bellbind.github.io/categories/2017-07">2017-07</a>
                 
                 
             </div>
@@ -323,7 +356,19 @@
                 <i class="fa fa-tags"></i>
                 
                 
-                <a class="article-category-link" href="https://bellbind.github.io/tags/hugo">hugo</a>
+                <a class="article-category-link" href="https://bellbind.github.io/tags/c">c</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://bellbind.github.io/tags/algorithm">algorithm</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://bellbind.github.io/tags/cryptography">cryptography</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://bellbind.github.io/tags/emscripten">emscripten</a>
                 
                 
             </div>
@@ -333,92 +378,420 @@
 </header>
 
         <div class="article-entry" itemprop="articleBody">
-            <p>github pagesをhugoにした話。</p>
+            <p>Note about imprementing major cryptographic Hash functions(SHA256, SHA512, SHA1, MD5, RIPEMD169)  with standard C11.
+Entire codes in gist are:</p>
+
+<ul>
+<li><a href="https://gist.github.com/bellbind/2fd66a09340942b9845ef432a5c8c419">SHA256</a></li>
+<li><a href="https://gist.github.com/bellbind/ff05971591d4fca28f001c143d46ae5f">SHA1</a></li>
+<li><a href="https://gist.github.com/bellbind/6cbaa8023e7588c6cbd17756f7c3ba42">MD5</a></li>
+<li><a href="https://gist.github.com/bellbind/d9368aafc1d9ee958f1d09c9305f48a9">RIPEMD160</a></li>
+<li><a href="https://gist.github.com/bellbind/030c8786e53af6c763fdf0e3fdbecbcc">SHA512</a></li>
+</ul>
+
+<p>These hash are similar algorithms. Once writing one of them, writing others would be easy.</p>
 
 <p></p>
 
-<h2 id="hugo-のインストール">hugo のインストール</h2>
+<hr />
 
-<p>macOSでhomebrewより:</p>
+<h2 id="port-from-sha256-ecmascript-implementation">Port from SHA256 ECMAScript implementation</h2>
 
-<pre><code class="language-bash">$ brew install hugo
+<p>At first, I wrote the <a href="https://bellbind.github.io/2017/07/08/implement-sha256-ecmascript/">SHA256 function with pure ECMAScript</a>.
+The implementation is very slower than other implementation: coreutils <code>sha256sum</code> and <code>crypto</code> in node.js.</p>
+
+<p>So I want to comparing them with WebAssembly based implementations.
+Before the writing pure WebAssembly program, I use the emscripten to generate from C implementations.
+Then I make the C11 SHA256 implementation from experiments of ECMAScript version.</p>
+
+<p>Implementing SHA256 with C11 is easier than with ECMAScript,  because:</p>
+
+<ul>
+<li>32bit unsigned integer operations exists: no overflow/minus sign processing required</li>
+<li>SHA256 not required memory management: no <code>malloc()</code> and <code>free()</code></li>
+</ul>
+
+<p>Used standard library functions are just <code>memcpy()</code> and <code>memset()</code> in <code>&lt;string.h&gt;</code>.
+They are easy to implement yourself (when no platform dependent speed up codes).</p>
+
+<p>The export API&rsquo;s are similar with ECMAScript versions: <code>sha256_init()</code>, <code>sha256_update()</code> and <code>sha256_digest()</code>.
+These arguments are pointers for memories allocated on the stack (local variables) as:</p>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &quot;sha256.h&quot;
+
+int main() {
+  struct sha256 ctx;
+  unsigned char digest[SHA256_HASH_BYTES];
+  char* buffer = &quot;Hello World!&quot;;
+
+  sha256_init(&amp;ctx);
+  sha256_update(&amp;ctx, buffer, 12);
+  sha256_digest(&amp;ctx, digest);
+
+  for (size_t i = 0; i &lt; SHA256_HASH_BYTES; i++) printf(&quot;%02x&quot;, digest[i]);
+  printf(&quot;  \&quot;%s\&quot;\n&quot;, buffer);
+  return 0;
+}
 </code></pre>
 
-<h2 id="hugoサイト作成">hugoサイト作成</h2>
+<h3 id="about-function-to-big-endian">About function to big endian</h3>
 
-<p>ソース側もgitで管理する:</p>
+<p>I prefer to use <code>union</code> to convert on memory layout than bit operations as:</p>
 
-<pre><code class="language-bash">$ hugo new site bellbind.github.io-hugo
-$ cd bellbind.github.io-hugo
-$ git init
-$ git add .
-$ git commit -m &quot;[init]&quot;
+<pre><code class="language-c">static inline uint32_t big32(uint32_t v) {
+  union {
+    struct {uint8_t b0, b1, b2, b3;};
+    uint32_t v;
+  } le = {.v = v};
+  union {
+    struct {uint8_t b3, b2, b1, b0;};
+    uint32_t v;
+  } be = {.b0 = le.b0, .b1 = le.b1, .b2 = le.b2, .b3 = le.b3};
+  return be.v;
+}
 </code></pre>
 
-<h2 id="テーマインストール">テーマインストール</h2>
+<p>When using bit operations to convert endian, I prefer filter cascading:</p>
 
-<p>icarusを使いました:</p>
-
-<pre><code class="language-bash">$ git submodule add https://github.com/digitalcraftsman/hugo-icarus-theme.git themes/icarus
-$ cp themes/icarus/exampleSite/config.toml .
-$ cp themes/icarus/exampleSite/data/l10n.toml data/
+<pre><code class="language-c">static inline uint32_t big32(uint32_t v) {
+   v = ((v &amp; 0xff00ff00) &gt;&gt; 8) | ((v &amp; 00ff00ff) &lt;&lt; 8);
+   return ((v &amp; 0xffff0000) &gt;&gt; 16) | ((v &amp; 0000ffff) &lt;&lt; 16));
+}
 </code></pre>
 
-<p>まず、config.tomlの<code>themeDir</code>は削り、<code>theme = &quot;icarus&quot;</code>にすることで、</p>
+<p>In standard C, there are no method to judge host endians <strong>at compile time</strong>.
+But gcc and clang has
+<a href="https://gcc.gnu.org/onlinedocs/cpp/Common-Predefined-Macros.html">predefined macros: <code>__BYTE_ORDER__</code>, <code>__ORDER_BIG_ENDIAN__</code></a>.</p>
 
-<pre><code class="language-bash">$ hugo server
+<p>It can print as:</p>
+
+<pre><code class="language-bash">$ cc -dMN -E - &lt; /dev/null | grep BYTE_ORDER
+#define __BYTE_ORDER__ __ORDER_LITTLE_ENDIAN__
 </code></pre>
 
-<p>で <a href="http://localhost:1313/">http://localhost:1313/</a> にてきちんと表示ができるようになる。</p>
+<h3 id="manual-loop-extraction">Manual loop extraction</h3>
 
-<p>あとは、ブラウザでページを見ながら、
-自分の情報に合わせてconfig.tomlを編集していく。</p>
+<p>In invertal <code>update()</code> function, the loops for mxing chunks to the vector is not effective
+because all variable assigned at last but only few variables(for example, <code>d</code> and <code>h</code> in SHA256)
+updated in each step, other assignments are just rotating.</p>
 
-<h2 id="公開ページ">公開ページ</h2>
-
-<p>まず、すでにあるgithub pagesのリポジトリを、cloneしてくる:</p>
-
-<pre><code class="language-bash">$ git clone git@github.com:bellbind/bellbind.github.io.git public/
+<pre><code class="language-c">  // loop version
+  uint32_t a = sh[0], b = sh[1], c = sh[2], d = sh[3],
+    e = sh[4], f = sh[5], g = sh[6], h = sh[7];
+  for (int i = 0; i &lt; 64; i++) {
+    uint32_t s0 = rotr(a, 2) ^ rotr(a, 13) ^ rotr(a, 22);
+    uint32_t s1 = rotr(e, 6) ^ rotr(e, 11) ^ rotr(e, 25);
+    uint32_t ch = (e &amp; f) ^ (~e &amp; g);
+    uint32_t maj = (a &amp; b) ^ (a &amp; c) ^ (b &amp; c);
+    uint32_t t1 = h + s1 + ch + K[i] + w[i];
+    uint32_t t2 = s0 + maj;
+    h = g; g = f; f = e; e = d + t1;
+    d = c; c = b; b = a; a = t1 + t2;
+  }
 </code></pre>
 
-<p>そのうえでhugoコマンドで生成し、commitしてpush:</p>
+<p>When extracted loop, variable assignments are turned to parameter rotation.
+The step updates the variables only, others are just referred.
+The execution time would be reduced for the loop extraction,
+called <a href="https://en.wikipedia.org/wiki/Loop_unrolling">loop unrolling</a> technique.</p>
 
-<pre><code class="language-bash">$ hugo
-$ cd public/
-$ git add .
-$ git commit -m &quot;$(LANG=C date)&quot;
-$ git push
+<pre><code class="language-c">// step as inline function
+static inline void
+step(uint32_t a, uint32_t b, uint32_t c, uint32_t* d,
+     uint32_t e, uint32_t f, uint32_t g, uint32_t* h, uint32_t w, uint32_t k) {
+  *h += t1(e, f, g, w, k);
+  *d += *h;
+  *h += t2(a, b, c);
+}
 </code></pre>
 
-<h2 id="運用">運用</h2>
-
-<p>記事ページは&rdquo;content/post/2017/06/hello-hugo.md&rdquo;におくことにした。
-また、categoriesとして&rdquo;2017-06&rdquo;を入れることにした。</p>
-
-<p>そのためarchitypes/default.mdを以下のように書いた。</p>
-
-<pre><code class="language-md">---
-title: &quot;{{ replace .TranslationBaseName &quot;-&quot; &quot; &quot; | title }}&quot;
-slug: &quot;{{ .TranslationBaseName }}&quot;
-date: {{ .Date }}
-categories: [&quot;{{dateFormat &quot;2006-01&quot; .Date}}&quot;]
-tags: []
-draft: false
----
-
-TL;DR
-
-HUGOMORE42
-
-## sub title
-
-- item 1
-    - sub 1
-    
+<pre><code class="language-c">  // extracted loop with inline function
+  uint32_t a = sh[0], b = sh[1], c = sh[2], d = sh[3],
+    e = sh[4], f = sh[5], g = sh[6], h = sh[7];
+  step(a, b, c, &amp;d, e, f, g, &amp;h, w[0], K[0]);
+  step(h, a, b, &amp;c, d, e, f, &amp;g, w[1], K[1]);
+  step(g, h, a, &amp;b, c, d, e, &amp;f, w[2], K[2]);
+  step(f, g, h, &amp;a, b, c, d, &amp;e, w[3], K[3]);
+  step(e, f, g, &amp;h, a, b, c, &amp;d, w[4], K[4]);
+  step(d, e, f, &amp;g, h, a, b, &amp;c, w[5], K[5]);
+  step(c, d, e, &amp;f, g, h, a, &amp;b, w[6], K[6]);
+  step(b, c, d, &amp;e, f, g, h, &amp;a, w[7], K[7]);
+  step(a, b, c, &amp;d, e, f, g, &amp;h, w[8], K[8]);
+  ....
+  step(b, c, d, &amp;e, f, g, h, &amp;a, w[63], K[63]);
 </code></pre>
+
+<p>FYI: execution times for 512MB data as:</p>
+
+<pre><code class="language-bash">$ dd if=/dev/zero bs=1m count=512 of=512M.data
+$ time ./sha256 512M.data
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="right">real time</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>loop      (clang-4)</td>
+<td align="right">3.684s</td>
+</tr>
+
+<tr>
+<td>extracted (clang-4)</td>
+<td align="right">3.205s</td>
+</tr>
+
+<tr>
+<td>loop      (gcc-7)</td>
+<td align="right">3.052s</td>
+</tr>
+
+<tr>
+<td>extracted (gcc-7)</td>
+<td align="right">3.063s</td>
+</tr>
+
+<tr>
+<td>(coreutil sha256sum)</td>
+<td align="right">3.207s</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="about-main-function-emulating-coreutils-hash-commands">About main function: emulating coreutils hash commands</h2>
+
+<p>At first, I only implemented output to coreutils compatible format as:</p>
+
+<pre><code>e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  /dev/null
+</code></pre>
+
+<p>It only uses standard C file functions: <code>fopen()</code>, <code>fread()</code> and <code>fclose()</code>.</p>
+
+<h3 id="note-on-libc-getline">note on libc <code>getline()</code></h3>
+
+<p>Then I implement checker option &ldquo;-c&rdquo; at next.
+It required <strong>text file line reading</strong>.
+I choose the <a href="http://man7.org/linux/man-pages/man3/getline.3.html"><code>getline()</code></a> function in <code>&lt;stdio.h&gt;</code>.
+But it is functions in <strong>POSIX extension</strong>; not available in some environments.</p>
+
+<p>So I just try to implement <code>getline()</code> compatible functions at:</p>
+
+<ul>
+<li><a href="https://gist.github.com/bellbind/966082b01fc39fffc8853b668942c36c">getline() with <code>fgets()</code> or with <code>fgetc()</code></a></li>
+</ul>
+
+<p>I tried both with <code>fgets()</code> version and with <code>fgetc()</code> version.
+The <code>fgets()</code> version would be faster than the <code>fgetc()</code> version but the code is tricky a little.</p>
+
+<pre><code class="language-c">static ssize_t
+getline(char** restrict pline, size_t* restrict plsize, FILE* restrict fp) {
+  if (*plsize &lt; 2) *pline = realloc(*pline, *plsize = 128);
+  if (feof(fp)) return -1;
+  char* cur = *pline;
+  size_t cursize = *plsize;
+  for (;;) {
+    char* ret = fgets(cur, cursize, fp);
+    if (ret == NULL &amp;&amp; !feof(fp)) return -1; //=&gt; read error
+    if (ret == NULL &amp;&amp; cur == *pline) return -1; //=&gt; read empty
+    char* eod = memchr(cur, '\0', cursize);
+    if (feof(fp) || eod[-1] == '\n') return eod - *pline;
+    // line continued
+    cursize = *plsize + 1; // last of *pline is '\0'
+    *pline = realloc(*pline, *plsize *= 2);
+    cur = *pline + *plsize - cursize;
+  }
+}
+</code></pre>
+
+<p>(I think <code>fgets()</code> would be better if returned the position of <code>'\0'</code>).</p>
+
+<h3 id="note-on-the-line-format-for-sum-file">note on the line format for sum file</h3>
+
+<p>The code of parsing sum lines is complex for emulating coreutils error/warning messages.
+The splitter of hex digest and file name is at most two, the first character allow  SPACE and TAB, but second one accepts only SPACE.
+The file names started with SPACE areallowed for the splitter.</p>
+
+<pre><code># blank lines and # comment lines allowed
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  /dev/null
+
+# single space silitter is allowed
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 /dev/null
+
+# space allowed fron t of lines
+    e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  /dev/null
+</code></pre>
+
+<p>Even if invalid formatted lines are exist, they do not effect the exit result value.</p>
+
+<h2 id="cmakefiles-txt-for-c-programs">CMakeFiles.txt for C programs</h2>
+
+<p>I added to a <a href="https://cmake.org/">cmake</a> build script. To build binaries and libraries as:</p>
+
+<pre><code class="language-bash">$ git clone https://gist.github.com/bellbind/2fd66a09340942b9845ef432a5c8c419 sha256
+$ cd sha256
+$ mkdir build
+$ cd build
+$ cmake ..
+$ make
+$ ./sha256e /dev/null
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  /dev/null
+</code></pre>
+
+<p>To switch the compiler with cmake options as:</p>
+
+<pre><code class="language-bash">$ make clean
+$ cmake -DCMAKE_C_COMPILER=gcc-7 ..
+$ make
+</code></pre>
+
+<hr />
+
+<h2 id="difference-of-other-hash-functions-from-sha256">Difference of other hash functions from SHA256</h2>
+
+<h3 id="sha1-from-sha256">SHA1 from SHA256</h3>
+
+<p><a href="https://en.wikipedia.org/wiki/SHA-1">SHA1</a> is:</p>
+
+<ul>
+<li>left cycric shift</li>
+<li>hash size: 5 x uint32</li>
+<li>loop steps: 80</li>
+<li>only 4 keys used used for each 20 loop steps</li>
+<li>loop step uses 4 diffrent non-linear function <code>f(b, c, d)</code> each 20 steps</li>
+</ul>
+
+<h3 id="md5-from-sha256">MD5 from SHA256</h3>
+
+<p><a href="https://en.wikipedia.org/wiki/MD5">MD5</a> is:</p>
+
+<ul>
+<li>little endian byte order</li>
+<li>left cycric shift</li>
+<li>hash size: 4 x uint32</li>
+<li>loop steps: 64</li>
+<li>chunk words are not mixed for values, indexes are mixed</li>
+<li>loop step uses 4 diffrent non-linear function <code>f(b, c, d)</code>, word index function <code>g(i)</code> and cycric shift amount <code>S[i]</code>for each 16 steps</li>
+</ul>
+
+<h3 id="ripemd160-from-sha256">RIPEMD160 from SHA256</h3>
+
+<p><a href="https://en.wikipedia.org/wiki/RIPEMD">RIPEMD160(aka RMD160)</a> is:</p>
+
+<ul>
+<li>little endian byte order</li>
+<li>left cycric shift</li>
+<li>hash size: 5 x uint32</li>
+<li>chunk words are not mixed for values, indexes are mixed</li>
+<li>loop steps: 80</li>
+<li>two variable rotations in loop step: left side and right side</li>
+<li>only 5 keys used for each 16 loop steps</li>
+<li>on both side, loop step uses 5 diffrent non-linear function <code>f(b, c, d)</code>, word index function <code>g(i)</code> and cycric shift amount <code>S[i]</code>for each 16 steps</li>
+<li>hash vector also rotated for each chunk: <code>h[i] = h[(i + 1) % 5] + l[(i + 2) % 5] + r[(i + 3) % 5]</code></li>
+</ul>
+
+<h3 id="sha512-from-sha256">SHA512 from SHA256</h3>
+
+<p><a href="https://en.wikipedia.org/wiki/SHA-2">SHA512</a> is:</p>
+
+<ul>
+<li>expand uint64 operators
+
+<ul>
+<li>hash size: 8 x uint64</li>
+<li>chunk size: 128 bytes</li>
+<li>bit size: uint128</li>
+<li>bit shift amount is diffrent</li>
+<li>(value of initial vector and keys are different as uint64)</li>
+</ul></li>
+<li>loop steps: 80</li>
+</ul>
+
+<hr />
+
+<h2 id="use-sha256-c-implementation-for-emscripten-with-webassemby">Use sha256 C implementation for emscripten (with WebAssemby)</h2>
+
+<p>The SHA256 C codes are also acceptable for <a href="https://github.com/kripken/emscripten">emscripten</a> compile without any modifications.
+After set up emscripten with <a href="https://github.com/WebAssembly/binaryen">bynaryen</a>,  for compiling with WebAssembly target as:</p>
+
+<pre><code class="language-bash">emcc -std=c11 -pedantic -O3 -Wall -Wextra sha256extracted.c -o sha256.js -s WASM=1 -s EXPORTED_FUNCTIONS='[&quot;_sha256_init&quot;,&quot;_sha256_update&quot;,&quot;_sha256_digest&quot;]'
+</code></pre>
+
+<p>It generates as emscripten module &ldquo;sha256.js&rdquo; and &ldquo;sha256.wasm&rdquo;.
+But it is not friendly for usual JavaScript programming because of:</p>
+
+<ul>
+<li>asynchronous module initialization existed (it would not use module synchromously as in node.js)</li>
+<li>memory allocation and releasing required: use <code>let ptr = m._malloc(s)</code> and <code>m._free(ptr)</code></li>
+<li>function params only integer. arrays and structs put in memory and pass its address values</li>
+<li>total memory size is fixed at compile time: default is 256 * 64k = 16M</li>
+</ul>
+
+<p>So usually, the emscripten module is wrapped with more user friendly module code.
+(But it cannot avoid async initialization and resource releasing entirely).</p>
+
+<p>The wrapper module: <code>sha256mod.js</code> is:</p>
+
+<ul>
+<li><a href="https://gist.github.com/bellbind/de02a751e52ab3a3d35e843221d3d37d">repoistory on gist</a></li>
+</ul>
+
+<p>It is a basic example for using emscripten modules.</p>
+
+<p>The repository includes:</p>
+
+<ul>
+<li>main code &ldquo;sha256main.js&rdquo;: outputs hash sums and checking sum files with &ldquo;-c&rdquo; option.</li>
+<li>package.json for building with <code>npm install</code>: emscripten embironments required</li>
+<li>run with <a href="https://www.npmjs.com/package/npx"><code>npx</code></a> as:</li>
+</ul>
+
+<pre><code class="language-bash">$ npx https://gist.github.com/bellbind/de02a751e52ab3a3d35e843221d3d37d /dev/null
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  /dev/null
+</code></pre>
+
+<p>Execution time for 512MB data as:</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="right">time</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>emscripten module</td>
+<td align="right">4.854s</td>
+</tr>
+
+<tr>
+<td>nodejs crypto module</td>
+<td align="right">1.777s</td>
+</tr>
+
+<tr>
+<td>pure ECMAScript module</td>
+<td align="right">1m10.004s</td>
+</tr>
+
+<tr>
+<td>(coreutils sha256sum)</td>
+<td align="right">3.2007s</td>
+</tr>
+</tbody>
+</table>
         </div>
         <footer class="article-footer">
-    <a data-url="https://bellbind.github.io/2017/06/30/hello-hugo/" data-id="3b594b98e063c7fa84142cc0787efa7e" class="article-share-link">
+    <a data-url="https://bellbind.github.io/2017/07/16/hash-functions-with-c/" data-id="211a7fa1c9e40e34dfbce9a2d1dd98de" class="article-share-link">
         <i class="fa fa-share"></i>
         Share
     </a>
@@ -495,14 +868,14 @@ HUGOMORE42
     
 <nav id="article-nav">
     
-
-    
-    <a href="https://bellbind.github.io/2017/07/01/hugo-support/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="https://bellbind.github.io/2017/07/08/implement-sha256-ecmascript/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">
-          Newer
+          Older
       </strong>
-      <div class="article-nav-title">hugoの支援コマンド</div>
+      <div class="article-nav-title">Implement SHA256 algorithm in pure ECMAScript</div>
     </a>
+    
+
     
 </nav>
 
