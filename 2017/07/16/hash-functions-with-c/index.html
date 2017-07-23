@@ -73,7 +73,7 @@ These hash are similar algorithms. Once writing one of them, writing others woul
 
 
 <meta itemprop="dateModified" content="2017-07-16T21:24:40&#43;09:00" />
-<meta itemprop="wordCount" content="1640">
+<meta itemprop="wordCount" content="1819">
 
 
 
@@ -223,12 +223,12 @@ These hash are similar algorithms. Once writing one of them, writing others woul
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        5
+        6
         <span>Posts</span>
       </div>
       <div class="article-info-block">
         
-          11
+          13
         
         <span>
             Tags
@@ -328,10 +328,10 @@ These hash are similar algorithms. Once writing one of them, writing others woul
             <i class="fa fa-calendar"></i>
             <time datetime="2017-07-16 21:24:40 &#43;0900 JST" itemprop="datePublished">2017-07-16</time>
             &middot;
-            1640
+            1819
             words
             &middot;
-            8
+            9
             minute read
         </div>
         
@@ -563,6 +563,53 @@ $ time ./sha256 512M.data
 </tr>
 </tbody>
 </table>
+
+<h3 id="clang-4-with-pragma-unroll">clang-4 with <code>pragma unroll</code></h3>
+
+<p>clang-4 has loop unrolling optimizations with
+<a href="https://clang.llvm.org/docs/AttributeReference.html#pragma-unroll-pragma-nounroll"><code>#pragma unroll</code></a>
+for each loop statements as:</p>
+
+<pre><code class="language-c">  uint32_t a = sh[0], b = sh[1], c = sh[2], d = sh[3],
+    e = sh[4], f = sh[5], g = sh[6], h = sh[7];
+  #pragma unroll
+  for (int i = 0; i &lt; 64; i++) {
+    uint32_t s0 = rotr(a, 2) ^ rotr(a, 13) ^ rotr(a, 22);
+    uint32_t s1 = rotr(e, 6) ^ rotr(e, 11) ^ rotr(e, 25);
+    uint32_t ch = (e &amp; f) ^ (~e &amp; g);
+    uint32_t maj = (a &amp; b) ^ (a &amp; c) ^ (b &amp; c);
+    uint32_t t1 = h + s1 + ch + K[i] + w[i];
+    uint32_t t2 = s0 + maj;
+    h = g; g = f; f = e; e = d + t1;
+    d = c; c = b; b = a; a = t1 + t2;
+  }
+</code></pre>
+
+<p>Apply it at loop steps and former chunk mixing in <code>update()</code>.
+It turns as:</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="right">real time</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>loop      (clang-4)</td>
+<td align="right">3.192s</td>
+</tr>
+
+<tr>
+<td>extracted (clang-4)</td>
+<td align="right">3.058s</td>
+</tr>
+</tbody>
+</table>
+
+<p>With &ldquo;pragma unroll&rdquo;, the extracted version reaches to gcc-7&rsquo;s speed.</p>
 
 <hr />
 
@@ -877,6 +924,13 @@ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  /dev/null
     
 
     
+    <a href="https://bellbind.github.io/2017/07/23/hash-functions-in-wast/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Newer
+      </strong>
+      <div class="article-nav-title">Implement Hash Functions In WebAssembly Text Format</div>
+    </a>
+    
 </nav>
 
 
@@ -895,6 +949,32 @@ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  /dev/null
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://bellbind.github.io/2017/07/23/hash-functions-in-wast/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://bellbind.github.io/categories/2017-07">
+                        2017-07
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://bellbind.github.io/2017/07/23/hash-functions-in-wast/" class="title">Implement Hash Functions In WebAssembly Text Format</a></p>
+                    <p class="item-date">
+                        <time datetime="2017-07-23 03:51:27 &#43;0900 JST" itemprop="datePublished">2017-07-23</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -1000,32 +1080,6 @@ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  /dev/null
                 </div>
             </li>
             
-            <li>
-                <div class="item-thumbnail">
-                    <a href="https://bellbind.github.io/2017/06/30/hello-hugo/" class="thumbnail">
-                    
-                        <span class="thumbnail-image thumbnail-none"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="https://bellbind.github.io/categories/2017-06">
-                        2017-06
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="https://bellbind.github.io/2017/06/30/hello-hugo/" class="title">Hello Hugo</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-06-30 23:13:45 &#43;0900 JST" itemprop="datePublished">2017-06-30</time>
-                    </p>
-                </div>
-            </li>
-            
         </ul>
     </div>
 </div>
@@ -1052,7 +1106,7 @@ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  /dev/null
                 <a class="category-list-link" href="https://bellbind.github.io/categories/2017-07">
                     2017-07
                 </a>
-                <span class="category-list-count">4</span>
+                <span class="category-list-count">5</span>
             </li>
             
         </ul>
@@ -1109,7 +1163,7 @@ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  /dev/null
                 <a class="category-list-link" href="https://bellbind.github.io/tags/cryptography">
                     cryptography
                 </a>
-                <span class="category-list-count">2</span>
+                <span class="category-list-count">3</span>
             </li>
             
             <li class="category-list-item">
@@ -1148,6 +1202,22 @@ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  /dev/null
                 
                 <a class="category-list-link" href="https://bellbind.github.io/tags/javascript">
                     javascript
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://bellbind.github.io/tags/node.js">
+                    node.js
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://bellbind.github.io/tags/webassembly">
+                    webassembly
                 </a>
                 <span class="category-list-count">1</span>
             </li>
@@ -1205,6 +1275,12 @@ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  /dev/null
         
         
         <a href="https://bellbind.github.io/tags/javascript" style="font-size: 12px;">javascript</a>
+        
+        
+        <a href="https://bellbind.github.io/tags/node.js" style="font-size: 12px;">node.js</a>
+        
+        
+        <a href="https://bellbind.github.io/tags/webassembly" style="font-size: 12px;">webassembly</a>
         
         
         <a href="https://bellbind.github.io/tags/webassemby" style="font-size: 12px;">webassemby</a>

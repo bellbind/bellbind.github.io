@@ -7,10 +7,29 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Powered by [Hugo](//gohugo.io). Theme by [Icarus](https://github.com/digitalcraftsman/hugo-icarus-theme).</copyright>
-    <lastBuildDate>Sun, 16 Jul 2017 21:24:40 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 23 Jul 2017 03:51:27 +0900</lastBuildDate>
     
 	<atom:link href="https://bellbind.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Implement Hash Functions In WebAssembly Text Format</title>
+      <link>https://bellbind.github.io/2017/07/23/hash-functions-in-wast/</link>
+      <pubDate>Sun, 23 Jul 2017 03:51:27 +0900</pubDate>
+      
+      <guid>https://bellbind.github.io/2017/07/23/hash-functions-in-wast/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://bellbind.github.io/2017/07/16/hash-functions-with-c/&#34;&gt;The emscripten module from C SHA256 code&lt;/a&gt;
+is much faster than &lt;a href=&#34;https://bellbind.github.io/2017/07/08/implement-sha256-ecmascript/&#34;&gt;the pure ES6 SHA256 code&lt;/a&gt;.
+But the emxcripten module required async initialization and explicit cleanup calls.
+In this article, Implement SHA256 in WebAssembly directly (with no emscripten).&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/bellbind/9b73b3965156f167cc0e500cdefb8c8a&#34;&gt;SHA256 in WAST&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/bellbind/825e0b6f6d0f1e428a7fd98346f4ae82&#34;&gt;SHA512 in WAST&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Implement Hash functions with C</title>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>hugoの支援コマンド &middot; bellbind.github.io</title>
+    <title>Implement Hash Functions In WebAssembly Text Format &middot; bellbind.github.io</title>
     <meta name="generator" content="Hugo 0.25.1" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,7 +10,7 @@
       <meta name="description" content="hello">
     
     
-    <link rel="canonical" href="https://bellbind.github.io/2017/07/01/hugo-support/"/>
+    <link rel="canonical" href="https://bellbind.github.io/2017/07/23/hash-functions-in-wast/"/>
     <link rel="icon" href="https://bellbind.github.io/favicon.ico">
     <link rel="apple-touch-icon" href="https://bellbind.github.io/apple-touch-icon.png"/>
     <link rel="stylesheet" href="https://bellbind.github.io/css/style.css">
@@ -20,18 +20,25 @@
     
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <meta property="og:title" content="hugoの支援コマンド" />
-<meta property="og:description" content="生成と編集でのディレクトリ指定とか、複数にgithub pushとか面倒なので、
-hugo用支援コマンドを作った。
+    <meta property="og:title" content="Implement Hash Functions In WebAssembly Text Format" />
+<meta property="og:description" content="The emscripten module from C SHA256 code
+is much faster than the pure ES6 SHA256 code.
+But the emxcripten module required async initialization and explicit cleanup calls.
+In this article, Implement SHA256 in WebAssembly directly (with no emscripten).
+
+
+SHA256 in WAST
+SHA512 in WAST
+
 
 " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://bellbind.github.io/2017/07/01/hugo-support/" />
+<meta property="og:url" content="https://bellbind.github.io/2017/07/23/hash-functions-in-wast/" />
 
 
 
-<meta property="article:published_time" content="2017-07-01T02:47:01&#43;09:00"/>
-<meta property="article:modified_time" content="2017-07-01T02:47:01&#43;09:00"/>
+<meta property="article:published_time" content="2017-07-23T03:51:27&#43;09:00"/>
+<meta property="article:modified_time" content="2017-07-23T03:51:27&#43;09:00"/>
 
 
 
@@ -45,19 +52,26 @@ hugo用支援コマンドを作った。
 
     
     
-<meta itemprop="name" content="hugoの支援コマンド">
-<meta itemprop="description" content="生成と編集でのディレクトリ指定とか、複数にgithub pushとか面倒なので、
-hugo用支援コマンドを作った。
+<meta itemprop="name" content="Implement Hash Functions In WebAssembly Text Format">
+<meta itemprop="description" content="The emscripten module from C SHA256 code
+is much faster than the pure ES6 SHA256 code.
+But the emxcripten module required async initialization and explicit cleanup calls.
+In this article, Implement SHA256 in WebAssembly directly (with no emscripten).
+
+
+SHA256 in WAST
+SHA512 in WAST
+
 
 ">
 
 
-<meta itemprop="dateModified" content="2017-07-01T02:47:01&#43;09:00" />
-<meta itemprop="wordCount" content="246">
+<meta itemprop="dateModified" content="2017-07-23T03:51:27&#43;09:00" />
+<meta itemprop="wordCount" content="2014">
 
 
 
-<meta itemprop="keywords" content="hugo,github,bash," />
+<meta itemprop="keywords" content="cryptography,node.js,webassembly," />
 
     
 
@@ -65,10 +79,17 @@ hugo用支援コマンドを作った。
 
 
 
-<meta name="twitter:text:title" content="hugoの支援コマンド"/>
-<meta name="twitter:title" content="hugoの支援コマンド"/>
-<meta name="twitter:description" content="生成と編集でのディレクトリ指定とか、複数にgithub pushとか面倒なので、
-hugo用支援コマンドを作った。
+<meta name="twitter:text:title" content="Implement Hash Functions In WebAssembly Text Format"/>
+<meta name="twitter:title" content="Implement Hash Functions In WebAssembly Text Format"/>
+<meta name="twitter:description" content="The emscripten module from C SHA256 code
+is much faster than the pure ES6 SHA256 code.
+But the emxcripten module required async initialization and explicit cleanup calls.
+In this article, Implement SHA256 in WebAssembly directly (with no emscripten).
+
+
+SHA256 in WAST
+SHA512 in WAST
+
 
 "/>
 <meta name="twitter:site" content="@bellbind"/>
@@ -286,9 +307,9 @@ hugo用支援コマンドを作った。
         
 
         <header class="article-header">
-    <a href="https://bellbind.github.io/2017/07/01/hugo-support/">
+    <a href="https://bellbind.github.io/2017/07/23/hash-functions-in-wast/">
     <h1 class="article-title" itemprop="name">
-        hugoの支援コマンド
+        Implement Hash Functions In WebAssembly Text Format
     </h1>
     </a>
     <div class="article-meta">
@@ -296,12 +317,12 @@ hugo用支援コマンドを作った。
         
         <div class="article-date">
             <i class="fa fa-calendar"></i>
-            <time datetime="2017-07-01 02:47:01 &#43;0900 JST" itemprop="datePublished">2017-07-01</time>
+            <time datetime="2017-07-23 03:51:27 &#43;0900 JST" itemprop="datePublished">2017-07-23</time>
             &middot;
-            246
+            2014
             words
             &middot;
-            1
+            10
             minute read
         </div>
         
@@ -326,15 +347,15 @@ hugo用支援コマンドを作った。
                 <i class="fa fa-tags"></i>
                 
                 
-                <a class="article-category-link" href="https://bellbind.github.io/tags/hugo">hugo</a>
+                <a class="article-category-link" href="https://bellbind.github.io/tags/cryptography">cryptography</a>
                 &middot;
                 
                 
-                <a class="article-category-link" href="https://bellbind.github.io/tags/github">github</a>
+                <a class="article-category-link" href="https://bellbind.github.io/tags/node.js">node.js</a>
                 &middot;
                 
                 
-                <a class="article-category-link" href="https://bellbind.github.io/tags/bash">bash</a>
+                <a class="article-category-link" href="https://bellbind.github.io/tags/webassembly">webassembly</a>
                 
                 
             </div>
@@ -344,66 +365,431 @@ hugo用支援コマンドを作った。
 </header>
 
         <div class="article-entry" itemprop="articleBody">
-            <p>生成と編集でのディレクトリ指定とか、複数にgithub pushとか面倒なので、
-hugo用支援コマンドを作った。</p>
+            <p><a href="/2017/07/16/hash-functions-with-c/">The emscripten module from C SHA256 code</a>
+is much faster than <a href="/2017/07/08/implement-sha256-ecmascript/">the pure ES6 SHA256 code</a>.
+But the emxcripten module required async initialization and explicit cleanup calls.
+In this article, Implement SHA256 in WebAssembly directly (with no emscripten).</p>
+
+<ul>
+<li><a href="https://gist.github.com/bellbind/9b73b3965156f167cc0e500cdefb8c8a">SHA256 in WAST</a></li>
+<li><a href="https://gist.github.com/bellbind/825e0b6f6d0f1e428a7fd98346f4ae82">SHA512 in WAST</a></li>
+</ul>
 
 <p></p>
 
+<h2 id="use-webassembly-instance-as-an-object-not-module">Use <code>WebAssembly.Instance</code> as an object (not module)</h2>
+
+<p>In node.js, usually modules are provided as  an object factory, not object itself.
+In emscripten with WebAssembly, it also uses <code>WebAssembly.Instance</code> as an object factory.
+A <code>WebAssembly.Instance</code> object has a memory(<code>WebAssembly.Memory</code>),
+and the memory is shared for objects used the memory of <code>WebAssembly.Instance</code> with <code>_malloc()</code> and <code>_free()</code>.
+It is the reason of explicit cleanup calls required.</p>
+
+<p>For removing the resource managements, use <code>WebAssembly.Instance</code> as an object.
+make wrapper module of WebAssembly for node.js as:</p>
+
+<pre><code class="language-js">// sha256.js
+const fs = require(&quot;fs&quot;);
+
+const wasm = fs.readFileSync(`${__dirname}/sha256.wasm`);
+const sha256m = new WebAssembly.Module(wasm);
+
+class sha256 {
+    constructor() {
+        this.hash = new WebAssembly.Instance(sha256m).exports;
+    }
+    update(buffer) {
+        //...
+    }
+    digest() {
+        //...
+    }
+}
+</code></pre>
+
+<p>The memory in <code>WebAssembly.Instance</code> is not shared. It just clean up when the wrapper object disappeared.</p>
+
+<p>Note that the files in the directory as:</p>
+
 <ul>
-<li><a href="https://github.com/bellbind/bellbind.github.io-hugo">https://github.com/bellbind/bellbind.github.io-hugo</a> の/bin/以下</li>
+<li>main.js: for command line (do similar outputs as coreutils sha256sum)</li>
+<li>sha256.js: wrapper nodejs module (provide same interface of crypto&rsquo;s hash object)</li>
+<li>sha256.wasm: WebAssembly binary format module</li>
 </ul>
 
-<h2 id="bin-post">bin/post</h2>
+<h2 id="how-to-write-a-webassembly-text-format-program-directly">How to write a WebAssembly Text Format program directly</h2>
 
-<p>記事ファイルの生成とエディタ立ち上げをするコマンド:</p>
+<p>Error messages of the binaryen&rsquo;s &ldquo;wasm-as&rdquo;  are difficult to understand what is wrong.
+Some strategies to write the unstable thingare:</p>
 
-<pre><code class="language-bash">#!/bin/bash
+<ul>
+<li>Write each small codes to check everytime</li>
+<li>Write code parts as splitted small <code>func</code>s at first, then embed into the bodies.</li>
+<li>Export the splitted <code>func</code>s to check them on node.js REPL.</li>
+</ul>
 
-#RUN=echo
-CUR=$(dirname $(dirname $0))
-$RUN cd $CUR
-TITLE=$1
-DAY=$(date &quot;+%d&quot;)
-if [[ -z $TITLE ]]
-then
-    TITLE=$DAY
-fi
-POST=$(date &quot;+post/%Y/%m&quot;)/${TITLE}.md
-$RUN hugo new $POST
-$RUN ${EDITOR=emacs} content/$POST
+<p>The compiler specification is just WebAssembly&rsquo;s minimum viable products(MVP), not match
+<a href="http://webassembly.org/docs/high-level-goals/">the online specifications</a>.
+The limitations of MVP are:</p>
+
+<ul>
+<li><code>global</code> decls is only for constant numbers, <code>set_global</code> operator is disabled.</li>
+<li><code>local</code> decls are only allowed in <code>func</code> head parts</li>
+<li>memory address type is <code>i32</code> only</li>
+<li>bit not operator is not existed, use <code>xor</code> with <code>-1</code>
+
+<ul>
+<li>boolean not operator is <code>eqz</code></li>
+</ul></li>
+</ul>
+
+<h2 id="writing-a-chunk-update-function">Writing a chunk <code>update()</code> function</h2>
+
+<p>The first version is only <code>update()</code> function for a 64byte chunk in a memory.
+It required to pass the initial vector values on the memory from JavaScript side.
+It can check the result to success pattern (pass a zero data chunk then &ldquo;hello world&rdquo; chunk) in each step.</p>
+
+<p>The memory layout is:</p>
+
+<ul>
+<li>hash vector address: 0-31</li>
+<li>chunk address: 32-95</li>
+</ul>
+
+<p>I wrote the <code>update()</code> as loop extracted version from the start.
+It is difficult to write with hand, so I write code generator with JavaScript.
+The computation functions &ldquo;to bigendien&rdquo;, &ldquo;w[i &gt;= 16]&rdquo; part, &ldquo;t1&rdquo;, &ldquo;t2&rdquo; is made as <code>func</code> formerly.</p>
+
+<p>The code generator (&ldquo;sha256update-call.js&rdquo;) just use them as:</p>
+
+<pre><code class="language-js">const setW16 = range64.slice(0, 16).map(i =&gt; `(set_local $w${i} (call $big32 (i32.load offset=32 align=4 (i32.const ${i * 4}))))`);
 </code></pre>
 
-<p><code>./bin/post hugo-support</code> または <code>./bin/post</code> (日付で<code>01.md</code>になる)のように使う。</p>
-
-<h2 id="bin-sync">bin/sync</h2>
-
-<p>HTML生成と、ソースとサイトのgithubへのアップロードをするコマンド:</p>
-
-<pre><code class="language-bash">#!/bin/bash
-
-#RUN=echo
-CUR=$(dirname $(dirname $0))
-$RUN cd $CUR
-DATE=$(LANG=C date)
-$RUN rm -r public/*
-if $RUN hugo
-then
-   $RUN git add content
-   $RUN git commit -m &quot;Add post: $DATE&quot;
-   $RUN git push
-   $RUN cd public/
-   DELETED=$(git ls-files --deleted)
-   $RUN git rm $DELETED
-   $RUN git add .
-   $RUN git commit -m &quot;Add post: $DATE&quot;
-   $RUN git push  
-fi
+<pre><code class="language-js">function genW(i) {
+    return `(set_local $w${i} (call $wn (get_local $w${i - 16}) (get_local $w${i - 15} )(get_local $w${i - 7}) (get_local $w${i - 2})))`;
+}
 </code></pre>
 
-<p><code>./bin/sync</code> で使う。</p>
+<pre><code class="language-js">function genStep(i, a, b, c, d, e, f, g, h) {
+    return `;; step ${i}
+(set_local $t (call $t1 (get_local $${e}) (get_local $${f}) (get_local $${g}) (get_local $${h}) (get_local $w${i}) (i32.const 0x${K[i].toString(16).padStart(8, &quot;0&quot;)})))
+(set_local $${d} (i32.add (get_local $${d}) (get_local $t)))
+(set_local $${h} (i32.add (get_local $t) (call $t2 (get_local $${a}) (get_local $${b}) (get_local $${c}))))`;
+}
+</code></pre>
+
+<p>Don&rsquo;t confuse template string placement&rsquo;s <code>$</code> and WAST name&rsquo;s <code>$</code>. For example, <code>$${f}</code> turns <code>$a</code> when <code>f = &quot;a&quot;</code>.</p>
+
+<p>The computation functions are directly written in WAST file &ldquo;sha256noupdate.wast&rdquo;.
+The &ldquo;sha256noupdate.wast&rdquo; also has  <code>(func $update)</code> as empty function,
+then it can compile with &ldquo;wasm-as&rdquo; standaalone and can check sub functions direct via <code>export</code>.
+The code generator replace the generated <code>(func $update ...)</code> to print.</p>
+
+<p>For example <code>func $wn</code> as &ldquo;w[i &gt;= 16]&rdquo; is
+just <code>w16 + (rotr(w15, 7) ^ rotr(w15, 18) ^ (w15 &gt;&gt;&gt; 3)) + w7 + (rotr(w2, 17) ^ rotr(w2, 19) ^ (w2 &gt;&gt;&gt; 10))</code>.
+It grows on WAST as:</p>
+
+<pre><code class="language-scm"> (func $wn (param $w16 i32) (param $w15 i32) (param $w7 i32) (param $w2 i32) (result i32)
+       (return (i32.add (i32.add (i32.add (get_local $w16)
+                                          (i32.xor (i32.xor (i32.rotr (get_local $w15) (i32.const 7))
+                                                            (i32.rotr (get_local $w15) (i32.const 18)))
+                                                   (i32.shr_u (get_local $w15) (i32.const 3))))
+                                 (get_local $w7))
+                        (i32.xor (i32.xor (i32.rotr (get_local $w2) (i32.const 17))
+                                          (i32.rotr (get_local $w2) (i32.const 19)))
+                                 (i32.shr_u (get_local $w2) (i32.const 10))))))
+</code></pre>
+
+<p>Computation to big endien by filter cascadings as:</p>
+
+<pre><code class="language-scm"> (func $big32 (param $v i32) (result i32)
+       (set_local $v (i32.or
+                        (i32.shr_u (i32.and (get_local $v) (i32.const 0xff00ff00)) (i32.const 8))
+                        (i32.shl   (i32.and (get_local $v) (i32.const 0x00ff00ff)) (i32.const 8))
+                        ))
+       (return (i32.or
+                        (i32.shr_u (i32.and (get_local $v) (i32.const 0xffff0000)) (i32.const 16))
+                        (i32.shl   (i32.and (get_local $v) (i32.const 0x0000ffff)) (i32.const 16))
+                        )))
+</code></pre>
+
+<p>Note on generating &ldquo;sha256.wasm&rdquo; file on command line as:</p>
+
+<pre><code class="language-bash">$ node sha256update-embed.js &gt; sha256.wast
+$ wasm-as sha256.wast
+</code></pre>
+
+<h2 id="add-start-func">Add <code>start</code> func</h2>
+
+<p>Initialization call is exist in WebAssembly as <code>start</code> declaration, set initial vector as:</p>
+
+<pre><code class="language-scm"> (start $init)
+ ;; memory layout: h[0..31], chunk[32..95]
+ (func $init
+       (i32.store align=4 (i32.const 0) (i32.const 0x6a09e667))
+       (i32.store align=4 (i32.const 4) (i32.const 0xbb67ae85))
+       (i32.store align=4 (i32.const 8) (i32.const 0x3c6ef372))
+       (i32.store align=4 (i32.const 12) (i32.const 0xa54ff53a))
+       (i32.store align=4 (i32.const 16) (i32.const 0x510e527f))
+       (i32.store align=4 (i32.const 20) (i32.const 0x9b05688c))
+       (i32.store align=4 (i32.const 24) (i32.const 0x1f83d9ab))
+       (i32.store align=4 (i32.const 28) (i32.const 0x5be0cd19))
+       )
+</code></pre>
+
+<h2 id="add-final-filled-bytesl-bytesh-to-generate-result-hash-value">Add <code>final(filled, bytesl, bytesh)</code> to generate result hash value</h2>
+
+<p>The finishing process of SHA256 is:</p>
+
+<ul>
+<li>embedding pad and bit length to chunk</li>
+<li>update last chunk</li>
+<li>turn hash vector as big-endian order</li>
+</ul>
+
+<p>then get memory in JavaScript side.</p>
+
+<p>As SHA256 specification, bit length is 64bit data, so exported funcation would be passed length with two 32bit data.
+The other parameter is chunk filled size. WHole code of <code>final(filled, bytesl, byteh)</code> is:</p>
+
+<pre><code class="language-scm"> (func $final (param $filled i32) (param $bytesl i32) (param $bytesh i32)
+       (i32.store8_u offset=32 (get_local $filled) (i32.const 0x80))
+       (set_local $filled (i32.add (get_local $filled) (i32.const 1)))
+       (if (i32.gt_u (get_local $filled) (i32.const 56))
+           (block
+            (call $memset (get_local $filled) (i32.const 0) (i32.const 64))
+            (call $update)
+            (set_local $filled (i32.const 0))
+            ))
+       (call $memset (get_local $filled) (i32.const 0) (i32.const 56))
+       (i64.store offset=32 align=8 (i32.const 56) (call $big64
+                                       (i64.or (i64.shl (i64.extend_u/i32 (get_local $bytesh)) (i64.const 35))
+                                               (i64.shl (i64.extend_u/i32 (get_local $bytesl)) (i64.const 3)))
+                                       ))
+       (call $update)
+       
+       (i32.store align=4 (i32.const  0) (call $big32 (i32.load align=4 (i32.const 0))))
+       (i32.store align=4 (i32.const  4) (call $big32 (i32.load align=4 (i32.const 4))))
+       (i32.store align=4 (i32.const  8) (call $big32 (i32.load align=4 (i32.const 8))))
+       (i32.store align=4 (i32.const 12) (call $big32 (i32.load align=4 (i32.const 12))))
+       (i32.store align=4 (i32.const 16) (call $big32 (i32.load align=4 (i32.const 16))))
+       (i32.store align=4 (i32.const 20) (call $big32 (i32.load align=4 (i32.const 20))))
+       (i32.store align=4 (i32.const 24) (call $big32 (i32.load align=4 (i32.const 24))))
+       (i32.store align=4 (i32.const 28) (call $big32 (i32.load align=4 (i32.const 28))))
+       )
+</code></pre>
+
+<p><code>memset(start, value, end)</code> is simply loops to set each bytes <code>while (start != end) *start++ = value;</code> as:</p>
+
+<pre><code class="language-scm"> ;; start and end is relative address at chunk offset
+ (func $memset (param $start i32) (param $v8 i32) (param $end i32)
+       (loop $loop (if (i32.eq (get_local $start) (get_local $end)) (return))
+              (i32.store8_u offset=32 (get_local $start) (get_local $v8))
+              (set_local $start (i32.add (get_local $start) (i32.const 1)))
+              (br $loop)))
+</code></pre>
+
+<p>then the WAST program fullly implemented SHA256 functionality.</p>
+
+<h2 id="raise-more-speed">Raise more speed</h2>
+
+<p>The minimum wasm module become fast from <a href="/2017/07/08/implement-sha256-ecmascript/">the pure ES6 code</a>,
+but yet slower than <a href="/2017/07/16/hash-functions-with-c/">the emscripten module</a>).
+For aquiring more speed,  several changes applied.</p>
+
+<h3 id="change-function-calls-to-inline-code">Change function calls to inline code</h3>
+
+<p>In WebAssembly, cost of function calls is relatively expensive.
+Replacing function calls to their code bodies raise runtime speed.</p>
+
+<p>The &ldquo;sha267update-embed.js&rdquo; is changed from the &ldquo;sha256update-call.js&rdquo; with no function calls.
+That reduce 30% of execution time. But the wasm file size is grown double.</p>
+
+<h3 id="reduce-local-variables">Reduce local variables</h3>
+
+<p>In SHA256, chunk mixed array is not required 64 when calculate mixing in each step.
+Set local w0 to w15, then reuse w(i % 16) variables in each steps.</p>
+
+<p>The &ldquo;sha256update-reduce-call.js&rdquo; is generator applied the local variables reducing.
+But the execution speed is almost same as &ldquo;sha256update-embed.js&rdquo; version.</p>
+
+<h3 id="move-chunking-process-inside-webassembly">Move chunking process inside WebAssembly</h3>
+
+<p>Not only <code>update()</code> 64 bytes in WebAssembly, the process chunking to 64bytes to call <code>update()</code> is moved into WebAssembly.
+In node.js, buffer size from reading file is 64KB, it exists thousand time JS-to-WAMS overheads.</p>
+
+<p>New <code>update(byteOffset, bytelength)</code> to accept any size of buffers is added to &ldquo;sha256noupdate.wast&rdquo;.
+Digest final call changes as <code>final()</code>.
+That means managing bytesize and chunk filled size inside module.</p>
+
+<p>The memory layout extends as:</p>
+
+<ul>
+<li>hash: 0-31 (4-uint32)</li>
+<li>chunk: 32-95 (64-byte)</li>
+<li>filled: 96-99 (int32)</li>
+<li>bytes: 104-111 (uint64)</li>
+<li>buffer: 112-&hellip;</li>
+</ul>
+
+<p>Note that every memory addresses would be aligned 8bytes; start address with multiple of 8.</p>
+
+<p><code>update(offsetm length)</code> as named `$updateBuf&rsquo; inside wasm as;</p>
+
+<pre><code class="language-scm"> (func $updateBuf (param $offs i32) (param $bytes i32)
+       (local $filled i32)
+       (local $copyend i32)
+       (set_local $filled (i32.load offset=96 align=4 (i32.const 0)))
+       (if (i32.lt_s (get_local $filled) (i32.const 0)) (return))
+       (i64.store offset=104 align=8 (i32.const 0) (i64.add (i64.load offset=104 align=8 (i32.const 0)) (i64.extend_u (get_local $bytes))))
+       
+       (loop $loop
+             (if (i32.lt_u (get_local $bytes) (i32.sub (i32.const 64) (get_local $filled)))
+                 (set_local $copyend (i32.add (get_local $filled) (get_local $bytes)))
+                 (set_local $copyend (i32.const 64)))
+             (call $memcpy (get_local $filled) (get_local $offs) (get_local $copyend))
+             (if (i32.ne (get_local $copyend) (i32.const 64))
+                 (block
+                  (i32.store offset=96 align=4 (i32.const 0) (get_local $copyend))
+                  (return)))
+             (call $update)
+             (set_local $offs (i32.add (get_local $offs) (i32.sub (i32.const 64) (get_local $filled))))
+             (set_local $bytes (i32.sub (get_local $bytes) (i32.sub (i32.const 64) (get_local $filled))))
+             (set_local $filled (i32.const 0))
+             (br $loop)
+             )
+       )
+</code></pre>
+
+<p>the psudocode of &ldquo;$updateBuf&rdquo; is:</p>
+
+<pre><code class="language-c">void updateBuf(uint32 offs, uint32 bytes) {
+  int32 filled = memory[96];
+  if (filled &lt; 0) return;
+  memory[112] += bytes;
+  
+  for (;;) {
+    uint32 copyend = bytes &lt; 64 - filled ? filled - bytes : 64;
+    memcpy(filled, offs, copyend);
+    if (copyend &lt; 64) {
+       memory[96] = copyend;
+       return;
+    }
+    update();
+    offs += 64 - filled;
+    bytes -= 64 - filled;
+    filled = 0;
+  }
+}
+</code></pre>
+
+<p><code>memcpy(start, src, end)</code> code is <code>while (start != end) *start++ = *src++;</code> as:</p>
+
+<pre><code class="language-scm"> ;; simple memcpy(start, src, end)
+ (func $memcpy (param $start i32) (param $src i32) (param $end i32)
+       (loop $loop (if (i32.eq (get_local $start) (get_local $end)) (return))
+              (i32.store8_u offset=32 (get_local $start) (i32.load_u (get_local $src)))
+              (set_local $start (i32.add (get_local $start) (i32.const 1)))
+              (set_local $src (i32.add (get_local $src) (i32.const 1)))
+              (br $loop)))
+</code></pre>
+
+<p>This change drastically reduce execution time for large data.
+In this step, the code gets faster than the emscripten version.</p>
+
+<h3 id="apply-alignment-copy">Apply alignment copy</h3>
+
+<p>The above <code>memcpy</code> is copy in each bytes.
+But in WebAssembly, it can also access as 64bit
+that would reduce times of memory access.</p>
+
+<p>To apply them, simply check the both <code>start</code> and <code>src</code> address started x8, use <code>i64</code>  memory access.</p>
+
+<pre><code class="language-scm">(func $memcpy (param $start i32) (param $src i32) (param $end i32)
+       (local $end8 i32)
+       (if (i32.and (i32.eqz (i32.and (get_local $start) (i32.const 0x7))) (i32.eqz (i32.and (get_local $src) (i32.const 0x7))))
+           (block $loop8-out
+                  (set_local $end8 (i32.sub (get_local $end) (i32.const 8)))
+                  (loop $loop8 (if (i32.ge_s (get_local $start) (get_local $end8)) (br $loop8-out))
+                        (i64.store offset=32 align=8 (get_local $start) (i64.load align=8 (get_local $src)))
+                        (set_local $start (i32.add (get_local $start) (i32.const 8)))
+                        (set_local $src (i32.add (get_local $src) (i32.const 8)))
+                        (br $loop8))
+                  ))
+       ;; remain as same loop
+       (loop $loop (if (i32.eq (get_local $start) (get_local $end)) (return))
+              (i32.store8_u offset=32 (get_local $start) (i32.load_u (get_local $src)))
+              (set_local $start (i32.add (get_local $start) (i32.const 1)))
+              (set_local $src (i32.add (get_local $src) (i32.const 1)))
+              (br $loop)))
+</code></pre>
+
+<p>The pseudocode is:</p>
+
+<pre><code class="language-c">void memcpy(uint32 start, uint32 src, uint32 end) {
+  if ((start &amp; 0x7) == 0 &amp;&amp; (src &amp; 0x7) == 0) {
+    for (int32 end8 = end - 8; start &lt;= end8; start += 8, src += 8) {
+      *((uint64) start) = *((uint64) src);
+    }
+  }
+  while (start != end) *start++ = *src++;
+}
+</code></pre>
+
+<p>Compare than the simple loop, the alignment access reduced 20% of execution time for large data.</p>
+
+<h2 id="about-sha512">About SHA512</h2>
+
+<p>SHA512 is extended version as SHA256 with  32bit to 64bit.
+In WAST file, just replacing <code>i32</code> operations to <code>i64</code>s and every constants.
+The memory of data total bytes splited two 64bit area.</p>
+
+<ul>
+<li>hash: 0-63 (4-uint64)</li>
+<li>chunk: 64-191 (128-byte)</li>
+<li>filled: 192-195 (int32)</li>
+<li>bytesl: 200-207 (uint64)</li>
+<li>bytesh: 208-215 (uint64)</li>
+<li>buffer: 216-&hellip;</li>
+</ul>
+
+<h2 id="npx-friendly-module">npx friendly module</h2>
+
+<p>From node.js-8.2, &ldquo;npx&rdquo; command is bundled.
+npx can execute npm package &ldquo;bin&rdquo; command directly from git urls.</p>
+
+<p>So, the <code>package.json</code> to the gist repositories for npx are added:</p>
+
+<ul>
+<li>SHA256: <a href="https://gist.github.com/bellbind/9b73b3965156f167cc0e500cdefb8c8a">https://gist.github.com/bellbind/9b73b3965156f167cc0e500cdefb8c8a</a></li>
+<li>SHA512: <a href="https://gist.github.com/bellbind/825e0b6f6d0f1e428a7fd98346f4ae82">https://gist.github.com/bellbind/825e0b6f6d0f1e428a7fd98346f4ae82</a></li>
+</ul>
+
+<p>Run as:</p>
+
+<pre><code class="language-bash">$ npx https://gist.github.com/bellbind/9b73b3965156f167cc0e500cdefb8c8a /dev/null
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 /dev/null
+
+$ npx https://gist.github.com/bellbind/825e0b6f6d0f1e428a7fd98346f4ae82 /dev/null
+cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e /dev/null
+</code></pre>
+
+<p>In the <code>package.json</code>, generate complete wast file and compile with &ldquo;wasm-as&rdquo; as:</p>
+
+<pre><code class="language-json">{
+    &quot;name&quot;: &quot;sha256w&quot;,
+    &quot;version&quot;: &quot;1.0.0&quot;,
+    &quot;main&quot;: &quot;sha256.js&quot;,
+    &quot;bin&quot;: &quot;main.js&quot;,
+    &quot;scripts&quot;: {
+        &quot;preinstall&quot;: &quot;echo 'This module required binaryen wasm-as command'&quot;,
+        &quot;install&quot;: &quot;node sha256update-reduce-local.js &gt; sha256.wast &amp;&amp; wasm-as sha256.wast&quot;
+    }
+}
+</code></pre>
         </div>
         <footer class="article-footer">
-    <a data-url="https://bellbind.github.io/2017/07/01/hugo-support/" data-id="9a3a9d33df349d692b7535343165fe40" class="article-share-link">
+    <a data-url="https://bellbind.github.io/2017/07/23/hash-functions-in-wast/" data-id="f35c741aa823fb3580deeba1f6a01d2c" class="article-share-link">
         <i class="fa fa-share"></i>
         Share
     </a>
@@ -480,21 +866,14 @@ fi
     
 <nav id="article-nav">
     
-    <a href="https://bellbind.github.io/2017/06/30/hello-hugo/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="https://bellbind.github.io/2017/07/16/hash-functions-with-c/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">
           Older
       </strong>
-      <div class="article-nav-title">Hello Hugo</div>
+      <div class="article-nav-title">Implement Hash functions with C</div>
     </a>
     
 
-    
-    <a href="https://bellbind.github.io/2017/07/03/compare-wasm/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">
-          Newer
-      </strong>
-      <div class="article-nav-title">Comparing WebAssembly performance with asm.js and plain ES6</div>
-    </a>
     
 </nav>
 

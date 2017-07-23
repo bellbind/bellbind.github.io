@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://bellbind.github.io/2017/07/23/hash-functions-in-wast/</loc>
+    <lastmod>2017-07-23T03:51:27+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://bellbind.github.io/2017/07/16/hash-functions-with-c/</loc>
     <lastmod>2017-07-16T21:24:40+09:00</lastmod>
   </url>
@@ -35,7 +40,7 @@
   
   <url>
     <loc>https://bellbind.github.io/categories/2017-07/</loc>
-    <lastmod>2017-07-16T21:24:40+09:00</lastmod>
+    <lastmod>2017-07-23T03:51:27+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -71,7 +76,7 @@
   
   <url>
     <loc>https://bellbind.github.io/tags/cryptography/</loc>
-    <lastmod>2017-07-16T21:24:40+09:00</lastmod>
+    <lastmod>2017-07-23T03:51:27+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -106,14 +111,26 @@
   </url>
   
   <url>
+    <loc>https://bellbind.github.io/tags/node.js/</loc>
+    <lastmod>2017-07-23T03:51:27+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://bellbind.github.io/post/</loc>
-    <lastmod>2017-07-16T21:24:40+09:00</lastmod>
+    <lastmod>2017-07-23T03:51:27+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://bellbind.github.io/tags/</loc>
     <lastmod>2017-07-16T21:24:40+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://bellbind.github.io/tags/webassembly/</loc>
+    <lastmod>2017-07-23T03:51:27+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -125,7 +142,7 @@
   
   <url>
     <loc>https://bellbind.github.io/</loc>
-    <lastmod>2017-07-16T21:24:40+09:00</lastmod>
+    <lastmod>2017-07-23T03:51:27+09:00</lastmod>
     <priority>0</priority>
   </url>
   
