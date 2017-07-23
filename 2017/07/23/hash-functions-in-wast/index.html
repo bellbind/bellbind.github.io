@@ -489,7 +489,7 @@ The code generator replace the generated <code>(func $update ...)</code> to prin
 just <code>w16 + (rotr(w15, 7) ^ rotr(w15, 18) ^ (w15 &gt;&gt;&gt; 3)) + w7 + (rotr(w2, 17) ^ rotr(w2, 19) ^ (w2 &gt;&gt;&gt; 10))</code>.
 It grows on WAST as:</p>
 
-<pre><code class="language-scm"> (func $wn (param $w16 i32) (param $w15 i32) (param $w7 i32) (param $w2 i32) (result i32)
+<pre><code class="language-scheme"> (func $wn (param $w16 i32) (param $w15 i32) (param $w7 i32) (param $w2 i32) (result i32)
        (return (i32.add (i32.add (i32.add (get_local $w16)
                                           (i32.xor (i32.xor (i32.rotr (get_local $w15) (i32.const 7))
                                                             (i32.rotr (get_local $w15) (i32.const 18)))
@@ -502,7 +502,7 @@ It grows on WAST as:</p>
 
 <p>Computation to big endien by filter cascadings as:</p>
 
-<pre><code class="language-scm"> (func $big32 (param $v i32) (result i32)
+<pre><code class="language-scheme"> (func $big32 (param $v i32) (result i32)
        (set_local $v (i32.or
                         (i32.shr_u (i32.and (get_local $v) (i32.const 0xff00ff00)) (i32.const 8))
                         (i32.shl   (i32.and (get_local $v) (i32.const 0x00ff00ff)) (i32.const 8))
@@ -523,7 +523,7 @@ $ wasm-as sha256.wast
 
 <p>Initialization call is exist in WebAssembly as <code>start</code> declaration, set initial vector as:</p>
 
-<pre><code class="language-scm"> (start $init)
+<pre><code class="language-scheme"> (start $init)
  ;; memory layout: h[0..31], chunk[32..95]
  (func $init
        (i32.store align=4 (i32.const 0) (i32.const 0x6a09e667))
@@ -552,7 +552,7 @@ $ wasm-as sha256.wast
 <p>As SHA256 specification, bit length is 64bit data, so exported funcation would be passed length with two 32bit data.
 The other parameter is chunk filled size. WHole code of <code>final(filled, bytesl, byteh)</code> is:</p>
 
-<pre><code class="language-scm"> (func $final (param $filled i32) (param $bytesl i32) (param $bytesh i32)
+<pre><code class="language-scheme"> (func $final (param $filled i32) (param $bytesl i32) (param $bytesh i32)
        (i32.store8_u offset=32 (get_local $filled) (i32.const 0x80))
        (set_local $filled (i32.add (get_local $filled) (i32.const 1)))
        (if (i32.gt_u (get_local $filled) (i32.const 56))
@@ -581,7 +581,7 @@ The other parameter is chunk filled size. WHole code of <code>final(filled, byte
 
 <p><code>memset(start, value, end)</code> is simply loops to set each bytes <code>while (start != end) *start++ = value;</code> as:</p>
 
-<pre><code class="language-scm"> ;; start and end is relative address at chunk offset
+<pre><code class="language-scheme"> ;; start and end is relative address at chunk offset
  (func $memset (param $start i32) (param $v8 i32) (param $end i32)
        (loop $loop (if (i32.eq (get_local $start) (get_local $end)) (return))
               (i32.store8_u offset=32 (get_local $start) (get_local $v8))
@@ -636,7 +636,7 @@ That means managing bytesize and chunk filled size inside module.</p>
 
 <p><code>update(offsetm length)</code> as named `$updateBuf&rsquo; inside wasm as;</p>
 
-<pre><code class="language-scm"> (func $updateBuf (param $offs i32) (param $bytes i32)
+<pre><code class="language-scheme"> (func $updateBuf (param $offs i32) (param $bytes i32)
        (local $filled i32)
        (local $copyend i32)
        (set_local $filled (i32.load offset=96 align=4 (i32.const 0)))
@@ -685,7 +685,7 @@ That means managing bytesize and chunk filled size inside module.</p>
 
 <p><code>memcpy(start, src, end)</code> code is <code>while (start != end) *start++ = *src++;</code> as:</p>
 
-<pre><code class="language-scm"> ;; simple memcpy(start, src, end)
+<pre><code class="language-scheme"> ;; simple memcpy(start, src, end)
  (func $memcpy (param $start i32) (param $src i32) (param $end i32)
        (loop $loop (if (i32.eq (get_local $start) (get_local $end)) (return))
               (i32.store8_u offset=32 (get_local $start) (i32.load_u (get_local $src)))
@@ -705,7 +705,7 @@ that would reduce times of memory access.</p>
 
 <p>To apply them, simply check the both <code>start</code> and <code>src</code> address started x8, use <code>i64</code>  memory access.</p>
 
-<pre><code class="language-scm">(func $memcpy (param $start i32) (param $src i32) (param $end i32)
+<pre><code class="language-scheme">(func $memcpy (param $start i32) (param $src i32) (param $end i32)
        (local $end8 i32)
        (if (i32.and (i32.eqz (i32.and (get_local $start) (i32.const 0x7))) (i32.eqz (i32.and (get_local $src) (i32.const 0x7))))
            (block $loop8-out
@@ -1270,6 +1270,7 @@ MathJax.Hub.Config({
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/scheme.min.js"></script>
 
 
 </body>
