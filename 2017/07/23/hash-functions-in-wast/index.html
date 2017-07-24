@@ -67,7 +67,7 @@ SHA512 in WAST
 
 
 <meta itemprop="dateModified" content="2017-07-23T03:51:27&#43;09:00" />
-<meta itemprop="wordCount" content="2014">
+<meta itemprop="wordCount" content="2020">
 
 
 
@@ -319,7 +319,7 @@ SHA512 in WAST
             <i class="fa fa-calendar"></i>
             <time datetime="2017-07-23 03:51:27 &#43;0900 JST" itemprop="datePublished">2017-07-23</time>
             &middot;
-            2014
+            2020
             words
             &middot;
             10
@@ -666,13 +666,13 @@ That means managing bytesize and chunk filled size inside module.</p>
 <pre><code class="language-c">void updateBuf(uint32 offs, uint32 bytes) {
   int32 filled = memory[96];
   if (filled &lt; 0) return;
-  memory[112] += bytes;
+  *((uint64*) (memory + 104)) += bytes;
   
   for (;;) {
     uint32 copyend = bytes &lt; 64 - filled ? filled + bytes : 64;
     memcpy(filled, offs, copyend);
     if (copyend &lt; 64) {
-       memory[96] = copyend;
+       *((uint32*) (memory + 96)) = copyend;
        return;
     }
     update();
