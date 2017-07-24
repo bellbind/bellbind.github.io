@@ -669,7 +669,7 @@ That means managing bytesize and chunk filled size inside module.</p>
   memory[112] += bytes;
   
   for (;;) {
-    uint32 copyend = bytes &lt; 64 - filled ? filled - bytes : 64;
+    uint32 copyend = bytes &lt; 64 - filled ? filled + bytes : 64;
     memcpy(filled, offs, copyend);
     if (copyend &lt; 64) {
        memory[96] = copyend;
@@ -729,7 +729,7 @@ that would reduce times of memory access.</p>
 <pre><code class="language-c">void memcpy(uint32 start, uint32 src, uint32 end) {
   if ((start &amp; 0x7) == 0 &amp;&amp; (src &amp; 0x7) == 0) {
     for (int32 end8 = end - 8; start &lt;= end8; start += 8, src += 8) {
-      *((uint64) start) = *((uint64) src);
+      *((uint64*) start) = *((uint64*) src);
     }
   }
   while (start != end) *start++ = *src++;
